@@ -1,0 +1,82 @@
+{
+  "actual_provider_cost": null,
+  "adapter_results": [
+    {
+      "claim_level": "measured_provider",
+      "cost": {
+        "actual_provider_cost": null,
+        "currency": "USD",
+        "estimated_provider_cost": 0.000275,
+        "is_placeholder": true
+      },
+      "external_call_attempted": true,
+      "has_real_provider_data": true,
+      "latency": {
+        "is_placeholder": false,
+        "latency_ms": 2187.0
+      },
+      "provider_calls": 1,
+      "request": {
+        "metadata": {
+          "mode": "live_boundary",
+          "response_text_redacted": true,
+          "source": "provider_harness"
+        },
+        "model_name": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "provider_name": "bedrock",
+        "request_id": "provider-001"
+      },
+      "response": {
+        "metadata": {
+          "bedrock_converse": true,
+          "mode": "live",
+          "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "response_text_redacted": true
+        },
+        "model_name": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "output_text": "[redacted]",
+        "provider_name": "bedrock",
+        "request_id": "provider-001"
+      },
+      "usage": {
+        "input_tokens": 19,
+        "output_tokens": 128,
+        "total_tokens": 147
+      },
+      "warnings": [
+        "single_provider_live_measurement",
+        "not_cost_reduction_evidence",
+        "not_gpu_evidence",
+        "response_text_redacted"
+      ]
+    }
+  ],
+  "allow_live": true,
+  "claim_level": "measured_provider",
+  "errors": [],
+  "estimated_provider_cost": 0.000275,
+  "evidence_status": "live_measured_provider",
+  "external_calls_attempted": true,
+  "failed_provider_calls": 0,
+  "fixture_path": "tests/fixtures/sample_requests.json",
+  "has_real_provider_data": true,
+  "input_tokens": 19,
+  "max_live_calls": 1,
+  "measured_latency_ms": 2187.0,
+  "mode": "live",
+  "output_tokens": 128,
+  "provider_calls": 1,
+  "provider_request_count": 1,
+  "response_text_redacted": true,
+  "run_type": "provider_harness_live",
+  "selected_model": "anthropic.claude-haiku-4-5-20251001-v1:0",
+  "selected_provider": "bedrock",
+  "successful_provider_calls": 1,
+  "total_tokens": 147,
+  "warnings": [
+    "single_provider_live_measurement",
+    "not_cost_reduction_evidence",
+    "not_gpu_evidence",
+    "response_text_redacted"
+  ]
+}
