@@ -9,6 +9,7 @@ Status: public-safe planning outline for KORA Core and AI Champion evidence.
 - Define public-safe evidence and artifact boundaries.
 - Establish route accounting schema for deterministic, cache, CPU, local GPU, and provider API targets.
 - KORA-CHAMPION-005 establishes the measurement-first evidence schema before live provider or GPU validation.
+- KORA-CHAMPION-006 establishes baseline-vs-KORA synthetic comparison before live provider or GPU evidence.
 
 ## June Week 2: Provider And Runtime Integration
 

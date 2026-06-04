@@ -57,6 +57,22 @@ The current script runs the local synthetic fixture harness, writes a JSON recor
 
 Synthetic evidence is not real runtime savings. It validates schema, local routing behavior, and evidence serialization only.
 
+## Comparison Evidence
+
+`docs/evidence/comparisons/` stores reviewed public-safe baseline-vs-KORA comparison records.
+
+Generate a synthetic baseline comparison:
+
+```bash
+python3 scripts/compare_synthetic_baseline.py
+```
+
+The current comparison uses `all_provider_api` as the synthetic baseline and compares it with KORA Core's classifier/router/harness path. Interpret the output as measurement scaffolding only. It does not prove real provider, GPU, token, latency, cost, or infrastructure savings.
+
+Human-readable synthetic comparison:
+
+- [Baseline vs KORA Synthetic Report](baseline-vs-kora-synthetic-report.md)
+
 ## Future Live Evidence Plan
 
 Future live evidence should add separate records for provider dry runs, provider live runs, GPU dry runs, GPU live runs, and hybrid live runs. Each live record must include source metadata for tokens, latency, cost, runtime, and claim boundaries.

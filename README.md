@@ -62,6 +62,10 @@ Current status:
 - no external network calls
 - not yet a production system
 
+## Current Evidence Status
+
+KORA Core has a measurement-first evidence schema and a baseline-vs-KORA synthetic comparison over public-safe fixtures. The current comparison is offline and synthetic: it demonstrates route accounting and provider-call avoidance measurement, but it does not prove real provider cost reduction, token reduction, latency reduction, GPU workload reduction, or infrastructure reduction.
+
 ## Public-Safety Note
 
 This repository must not contain secrets, private provider credentials, GPU credentials, SSH credentials, raw private logs, or private infrastructure details. Use ignored local/private directories for sensitive operational artifacts.
