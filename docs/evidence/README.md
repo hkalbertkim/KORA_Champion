@@ -92,6 +92,26 @@ Interpretation guide:
 - `actual_provider_cost` must remain `null`.
 - `has_real_provider_data` must remain `false`.
 
+## Live Provider Evidence Boundary
+
+Live provider evidence requires explicit live mode:
+
+```bash
+KORA_PROVIDER_MODE=live
+```
+
+Check local provider config without network calls:
+
+```bash
+python3 scripts/check_provider_config.py
+```
+
+The config check prints redacted summaries only. It does not load `.env` automatically and does not print credential values.
+
+Dry-run evidence is not real provider evidence. Live evidence must be generated only after provider-specific adapters, request scrubbing, token accounting, latency timing, cost metadata, and claim review are implemented.
+
+Secrets must never be committed. Keep local provider config in ignored local files or shell environment state.
+
 ## Future Live Evidence Plan
 
 Future live evidence should add separate records for provider dry runs, provider live runs, GPU dry runs, GPU live runs, and hybrid live runs. Each live record must include source metadata for tokens, latency, cost, runtime, and claim boundaries.

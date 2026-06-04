@@ -181,3 +181,25 @@ class DryRunProviderAdapter:
     def _deterministic_output(prompt: str, request_id: str) -> str:
         digest = hashlib.sha256(f"{request_id}:{prompt}".encode("utf-8")).hexdigest()[:12]
         return f"dry_run_response:{request_id}:{digest}"
+
+
+def create_provider_adapter(
+    provider_name: str | ProviderId = ProviderId.LOCAL_MOCK,
+    *,
+    mode: str = "dry_run",
+    config: Any | None = None,
+) -> ProviderAdapter:
+    """Create a provider adapter without making external calls."""
+
+    provider = validate_provider_id(provider_name)
+    if mode == "dry_run":
+        return DryRunProviderAdapter(provider_name=provider)
+    if mode == "live":
+        from kora_core.config import load_provider_config
+        from kora_core.live_provider_adapter import LiveProviderAdapter
+
+        selected_config = config or load_provider_config()
+        if str(selected_config.provider) != str(provider):
+            raise ValueError(f"live config provider {selected_config.provider!s} does not match requested {provider!s}")
+        return LiveProviderAdapter(selected_config)
+    raise ValueError(f"unsupported provider adapter mode {mode!r}")

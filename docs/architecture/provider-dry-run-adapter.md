@@ -36,6 +36,8 @@ Dry-run behavior:
 
 Live provider behavior is not implemented. Future live adapters must be added behind explicit approval gates and secret-safe configuration.
 
+Dry-run remains the default provider mode. The live boundary requires explicit `KORA_PROVIDER_MODE=live` and validated KORA-specific provider config before a live adapter boundary can be constructed.
+
 ## Provider Identifiers
 
 Supported identifiers:

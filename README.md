@@ -68,6 +68,24 @@ KORA Core has a measurement-first evidence schema and a baseline-vs-KORA synthet
 
 Provider dry-run support now records provider-shaped request, token, cost, latency, and warning fields without external calls or credentials. Dry-run evidence is not measured provider evidence.
 
+## Provider Config
+
+KORA Core defaults to dry-run provider mode:
+
+```bash
+python3 scripts/check_provider_config.py
+```
+
+Use `.env.example` as a local reference for KORA-specific environment variable names. The core library reads environment variables only and does not automatically load `.env` files.
+
+Live mode must be explicit:
+
+```bash
+KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=local_mock python3 scripts/check_provider_config.py
+```
+
+The current live adapter is a boundary only. It validates config and refuses missing live requirements, but it does not call provider APIs and does not produce measured provider evidence.
+
 ## Public-Safety Note
 
 This repository must not contain secrets, private provider credentials, GPU credentials, SSH credentials, raw private logs, or private infrastructure details. Use ignored local/private directories for sensitive operational artifacts.
