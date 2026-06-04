@@ -16,6 +16,7 @@ from kora_core.live_provider_adapter import (
     LiveProviderNotEnabledError,
     MissingProviderCredentialError,
 )
+from kora_core.openai_live_adapter import LiveProviderExecutionNotAllowedError
 from kora_core.provider_adapter import ProviderRequest, create_provider_adapter
 from kora_core.providers import ProviderId, validate_provider_id
 from kora_core.run_record import provider_metrics_from_adapter_results
@@ -46,6 +47,10 @@ class ProviderHarnessResult:
     evidence_status: str = "ok"
     external_calls_attempted: bool = False
     provider_request_count: int = 0
+    successful_provider_calls: int = 0
+    failed_provider_calls: int = 0
+    measured_latency_ms: float | None = None
+    response_text_redacted: bool = True
     adapter_results: list[dict[str, Any]] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,6 +71,10 @@ class ProviderHarnessResult:
             "evidence_status": self.evidence_status,
             "external_calls_attempted": self.external_calls_attempted,
             "provider_request_count": self.provider_request_count,
+            "successful_provider_calls": self.successful_provider_calls,
+            "failed_provider_calls": self.failed_provider_calls,
+            "measured_latency_ms": self.measured_latency_ms,
+            "response_text_redacted": self.response_text_redacted,
             "adapter_results": list(self.adapter_results),
         }
 
@@ -78,6 +87,9 @@ def run_provider_harness(
     model_name: str = "dry-run-model",
     mode: str | ProviderMode = ProviderMode.DRY_RUN,
     env: Mapping[str, str] | None = None,
+    allow_live: bool = False,
+    max_live_calls: int = 1,
+    transport: Any | None = None,
 ) -> ProviderHarnessResult:
     """Run provider-shaped evidence for routed provider requests only."""
 
@@ -93,6 +105,9 @@ def run_provider_harness(
             provider=provider,
             model_name=model_name,
             env=env,
+            allow_live=allow_live,
+            max_live_calls=max_live_calls,
+            transport=transport,
         )
 
     adapter = create_provider_adapter(provider, mode=str(ProviderMode.DRY_RUN))
@@ -136,13 +151,22 @@ def _run_live_boundary(
     provider: ProviderId,
     model_name: str,
     env: Mapping[str, str] | None,
+    allow_live: bool,
+    max_live_calls: int,
+    transport: Any | None,
 ) -> ProviderHarnessResult:
     config_env = dict(os.environ if env is None else env)
     config_env[ENV_PROVIDER_MODE] = str(ProviderMode.LIVE)
     config_env[ENV_LIVE_PROVIDER] = str(provider)
     try:
         config = load_provider_config(config_env)
-        adapter = create_provider_adapter(provider, mode=str(ProviderMode.LIVE), config=config)
+        adapter = create_provider_adapter(
+            provider,
+            mode=str(ProviderMode.LIVE),
+            config=config,
+            allow_live=allow_live,
+            transport=transport,
+        )
         adapter_results = [
             adapter.invoke(
                 ProviderRequest(
@@ -153,9 +177,14 @@ def _run_live_boundary(
                     metadata={"source": "provider_harness", "mode": "live_boundary"},
                 )
             )
-            for record in provider_records
+            for record in provider_records[: max(0, int(max_live_calls))]
         ]
-    except (MissingProviderCredentialError, LiveProviderNotEnabledError, ValueError) as exc:
+    except (
+        MissingProviderCredentialError,
+        LiveProviderExecutionNotAllowedError,
+        LiveProviderNotEnabledError,
+        ValueError,
+    ) as exc:
         return ProviderHarnessResult(
             mode=str(ProviderMode.LIVE),
             selected_provider=str(provider),
@@ -172,8 +201,19 @@ def _run_live_boundary(
             errors=[str(exc)],
             evidence_status="live_config_error",
             provider_request_count=len(provider_records),
+            failed_provider_calls=len(provider_records[: max(0, int(max_live_calls))]),
         )
 
+    successful_provider_calls = sum(1 for result in adapter_results if result.has_real_provider_data)
+    failed_provider_calls = len(adapter_results) - successful_provider_calls
+    has_real_provider_data = successful_provider_calls > 0 and provider == ProviderId.OPENAI
+    claim_level = ClaimLevel.MEASURED_PROVIDER if has_real_provider_data else ClaimLevel.DRY_RUN
+    evidence_status = "live_measured_provider" if has_real_provider_data else "live_boundary_not_implemented"
+    warnings = (
+        list(dict.fromkeys(warning for result in adapter_results for warning in result.warnings))
+        if adapter_results
+        else list(dict.fromkeys(LIVE_BOUNDARY_WARNINGS))
+    )
     return ProviderHarnessResult(
         mode=str(ProviderMode.LIVE),
         selected_provider=str(provider),
@@ -184,12 +224,17 @@ def _run_live_boundary(
         total_tokens=sum(result.usage.total_tokens for result in adapter_results),
         estimated_provider_cost=round(sum(result.cost.estimated_provider_cost for result in adapter_results), 8),
         actual_provider_cost=None,
-        has_real_provider_data=False,
-        claim_level=str(ClaimLevel.DRY_RUN),
-        warnings=list(dict.fromkeys(LIVE_BOUNDARY_WARNINGS)),
+        has_real_provider_data=has_real_provider_data,
+        claim_level=str(claim_level),
+        warnings=warnings,
         errors=[],
-        evidence_status="live_boundary_not_implemented",
+        evidence_status=evidence_status,
+        external_calls_attempted=any(result.external_call_attempted for result in adapter_results),
         provider_request_count=len(provider_records),
+        successful_provider_calls=successful_provider_calls,
+        failed_provider_calls=failed_provider_calls,
+        measured_latency_ms=round(sum(result.latency.latency_ms for result in adapter_results), 6),
+        response_text_redacted=True,
         adapter_results=[result.to_dict() for result in adapter_results],
     )
 

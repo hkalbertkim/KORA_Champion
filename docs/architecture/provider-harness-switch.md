@@ -43,6 +43,18 @@ If config is valid but no concrete live adapter exists, the harness returns `liv
 - zero real provider calls
 - warnings explaining the boundary status
 
+## Live OpenAI Path
+
+The first concrete live path is OpenAI-only. It requires:
+
+```bash
+KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai KORA_OPENAI_API_KEY=... python3 scripts/run_provider_harness.py --mode live --provider openai --model gpt-4o-mini --allow-live --max-live-calls 1
+```
+
+`--allow-live` is mandatory. Without it, the harness fails before any network-capable adapter can run.
+
+`--max-live-calls` defaults to `1` and should remain low during initial validation.
+
 ## Config Loading
 
 The harness uses `src/kora_core/config.py` and loads provider config from environment variables only. It does not automatically read `.env` files.
@@ -73,6 +85,8 @@ Unsupported provider identifiers fail clearly. Live mode with missing required c
 ## Why No External Calls Are Made
 
 Task 009 is a harness switch only. It intentionally avoids provider SDKs, HTTP clients, network calls, real provider credentials, and real provider measurements.
+
+Task 010 adds the first OpenAI live measurement adapter behind the same harness switch. Dry-run remains the default.
 
 ## Task 010 Path
 

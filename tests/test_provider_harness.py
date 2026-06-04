@@ -50,6 +50,21 @@ class ProviderHarnessTests(unittest.TestCase):
         self.assertEqual(result.provider_calls, 0)
         self.assertTrue(result.errors)
 
+    def test_live_mode_with_key_without_allow_live_fails_safely(self) -> None:
+        result = run_provider_harness(
+            fixture_path=FIXTURE,
+            provider_name="openai",
+            mode="live",
+            env={
+                "KORA_PROVIDER_MODE": "live",
+                "KORA_LIVE_PROVIDER": "openai",
+                "KORA_OPENAI_API_KEY": "redaction-test-value",
+            },
+        )
+        self.assertEqual(result.evidence_status, "live_config_error")
+        self.assertFalse(result.external_calls_attempted)
+        self.assertFalse(result.has_real_provider_data)
+
     def test_live_mode_does_not_expose_secret_values(self) -> None:
         result = run_provider_harness(
             fixture_path=FIXTURE,
@@ -123,6 +138,10 @@ class ProviderHarnessTests(unittest.TestCase):
         self.assertNotEqual(completed.returncode, 0)
         self.assertIn("live_config_error", completed.stdout)
         self.assertNotIn("redaction-test-value", completed.stdout)
+        summary = json.loads(completed.stdout)
+        output_path = REPO_ROOT / summary["evidence_path"]
+        if output_path.exists():
+            output_path.unlink()
 
 
 if __name__ == "__main__":

@@ -104,6 +104,14 @@ KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai python3 scripts/run_provider_h
 
 Without required config, live mode fails safely. With valid config, the current boundary still does not call provider APIs or produce measured provider evidence.
 
+First bounded OpenAI live measurement command:
+
+```bash
+KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai KORA_OPENAI_API_KEY=replace-with-your-key python3 scripts/run_provider_harness.py --mode live --provider openai --model gpt-4o-mini --allow-live --max-live-calls 1
+```
+
+This command is intentionally limited to one provider-routed fixture request by default. Do not commit unsanitized live evidence, and do not interpret a single live measurement as provider savings evidence.
+
 ## Public-Safety Note
 
 This repository must not contain secrets, private provider credentials, GPU credentials, SSH credentials, raw private logs, or private infrastructure details. Use ignored local/private directories for sensitive operational artifacts.

@@ -130,6 +130,25 @@ Dry-run evidence is not real provider evidence. Live evidence must be generated 
 
 Secrets must never be committed. Keep local provider config in ignored local files or shell environment state.
 
+## Provider Live Runs
+
+`docs/evidence/provider-live-runs/` is reserved for sanitized live provider evidence.
+
+Live evidence safety rules:
+
+- Do not commit unsanitized live evidence.
+- Do not commit API keys, account identifiers, private prompts, private responses, or raw provider payloads.
+- Response text should be redacted by default.
+- Prompt text should be synthetic fixture text or redacted.
+- `actual_provider_cost` remains `null` unless a reviewed cost source is added.
+- A single live provider measurement is not cost-reduction evidence by itself.
+
+Example bounded live command:
+
+```bash
+KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai KORA_OPENAI_API_KEY=replace-with-your-key python3 scripts/run_provider_harness.py --mode live --provider openai --model gpt-4o-mini --allow-live --max-live-calls 1
+```
+
 ## Future Live Evidence Plan
 
 Future live evidence should add separate records for provider dry runs, provider live runs, GPU dry runs, GPU live runs, and hybrid live runs. Each live record must include source metadata for tokens, latency, cost, runtime, and claim boundaries.

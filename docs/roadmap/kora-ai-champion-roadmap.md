@@ -13,6 +13,7 @@ Status: public-safe planning outline for KORA Core and AI Champion evidence.
 - KORA-CHAMPION-007 establishes the provider dry-run adapter interface before live provider validation.
 - KORA-CHAMPION-008 establishes the secret-safe live provider boundary before live provider validation.
 - KORA-CHAMPION-009 establishes the dry-run-to-live provider harness switch before first live provider validation.
+- KORA-CHAMPION-010 establishes the first bounded OpenAI live provider measurement path.
 
 ## June Week 2: Provider And Runtime Integration
 

@@ -188,8 +188,15 @@ def create_provider_adapter(
     *,
     mode: str = "dry_run",
     config: Any | None = None,
+    allow_live: bool = False,
+    transport: Any | None = None,
 ) -> ProviderAdapter:
-    """Create a provider adapter without making external calls."""
+    """Create a provider adapter.
+
+    Dry-run construction never makes external calls. Live OpenAI construction
+    requires explicit ``allow_live=True`` before a network-capable adapter can
+    be returned.
+    """
 
     provider = validate_provider_id(provider_name)
     if mode == "dry_run":
@@ -197,9 +204,12 @@ def create_provider_adapter(
     if mode == "live":
         from kora_core.config import load_provider_config
         from kora_core.live_provider_adapter import LiveProviderAdapter
+        from kora_core.openai_live_adapter import OpenAILiveProviderAdapter
 
         selected_config = config or load_provider_config()
         if str(selected_config.provider) != str(provider):
             raise ValueError(f"live config provider {selected_config.provider!s} does not match requested {provider!s}")
+        if provider == ProviderId.OPENAI:
+            return OpenAILiveProviderAdapter(selected_config, allow_live=allow_live, transport=transport)
         return LiveProviderAdapter(selected_config)
     raise ValueError(f"unsupported provider adapter mode {mode!r}")
