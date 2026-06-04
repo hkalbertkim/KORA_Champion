@@ -1,0 +1,94 @@
+{
+  "claim_boundaries": [
+    "GPU harness output alone does not prove GPU reduction.",
+    "GPU harness output alone does not prove infrastructure reduction.",
+    "Full comparison requires GPU-only and KORA-routed measured runs."
+  ],
+  "evidence_required_per_stage": {
+    "heavy": [
+      "gpu_snapshot_before",
+      "gpu_snapshot_after",
+      "runtime_seconds",
+      "successful_units",
+      "failed_units",
+      "throughput_units_per_second",
+      "utilization_samples",
+      "memory_samples",
+      "claim_boundary"
+    ],
+    "micro": [
+      "gpu_snapshot_before",
+      "gpu_snapshot_after",
+      "runtime_seconds",
+      "successful_units",
+      "failed_units",
+      "throughput_units_per_second",
+      "utilization_samples",
+      "memory_samples",
+      "claim_boundary"
+    ],
+    "saturation": [
+      "gpu_snapshot_before",
+      "gpu_snapshot_after",
+      "runtime_seconds",
+      "successful_units",
+      "failed_units",
+      "throughput_units_per_second",
+      "utilization_samples",
+      "memory_samples",
+      "claim_boundary"
+    ],
+    "smoke": [
+      "gpu_snapshot_before",
+      "gpu_snapshot_after",
+      "runtime_seconds",
+      "successful_units",
+      "failed_units",
+      "throughput_units_per_second",
+      "utilization_samples",
+      "memory_samples",
+      "claim_boundary"
+    ]
+  },
+  "safety_notes": [
+    "Do not include credentials or private access details in public evidence.",
+    "Do not include machine access metadata in public evidence.",
+    "Run larger stages only after smoke evidence passes automated validation."
+  ],
+  "stages": [
+    {
+      "batch_size": 50,
+      "planned_batches": 2,
+      "stage": "smoke",
+      "workload_id": "gpu_smoke_100",
+      "workload_size": 100,
+      "workload_unit_type": "synthetic_inference_unit"
+    },
+    {
+      "batch_size": 1000,
+      "planned_batches": 10,
+      "stage": "micro",
+      "workload_id": "gpu_micro_10000",
+      "workload_size": 10000,
+      "workload_unit_type": "synthetic_inference_unit"
+    },
+    {
+      "batch_size": 5000,
+      "planned_batches": 20,
+      "stage": "heavy",
+      "workload_id": "gpu_heavy_100000",
+      "workload_size": 100000,
+      "workload_unit_type": "synthetic_inference_unit"
+    },
+    {
+      "batch_size": 10000,
+      "planned_batches": 100,
+      "stage": "saturation",
+      "workload_id": "gpu_saturation_1000000",
+      "workload_size": 1000000,
+      "workload_unit_type": "synthetic_inference_unit"
+    }
+  ],
+  "target_gpu_count": 2,
+  "target_resource_deadline": "2026-07-01"
+}

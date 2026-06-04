@@ -33,15 +33,32 @@ Provider evidence must identify the provider family, model or runtime identifier
 
 ## GPU Evidence
 
-GPU evidence must identify only public-safe runtime configuration and aggregate measurements suitable for release. Private server details, credentials, raw logs, and operational access notes must stay in ignored private storage.
+GPU evidence must identify only public-safe runtime configuration and aggregate measurements suitable for release. Private access details, credentials, raw logs, and operational access notes must stay in ignored private storage.
+
+## GPU Plans And Runs
+
+`docs/evidence/gpu-plans/` stores public-safe GPU benchmark plans.
+
+`docs/evidence/gpu-runs/` is reserved for reviewed GPU run summaries.
+
+GPU evidence interpretation:
+
+- Plan files define intended benchmark stages and claim boundaries.
+- Run files should contain only sanitized aggregate measurements.
+- GPU live measurements are not complete yet.
+- Do not commit credentials, private access details, private paths, endpoint details, or raw operational logs.
+
+Current GPU plan:
+
+- [GPU Evidence Plan](gpu-evidence-plan.md)
 
 ## Dashboard Screenshots
 
-Dashboard screenshots may be committed only after review for secrets, private hostnames, account identifiers, raw logs, and unreleased claims. Prefer synthetic or sanitized screenshots until real evidence is approved.
+Dashboard screenshots may be committed only after review for secrets, private access labels, account identifiers, raw logs, and unreleased claims. Prefer synthetic or sanitized screenshots until real evidence is approved.
 
 ## Safety Rules For Evidence Artifacts
 
-Commit only reviewed, public-safe summaries. Keep raw or sensitive artifacts in ignored local directories. Do not commit private logs, credential paths, API keys, SSH material, private provider responses, or local-only operational notes.
+Commit only reviewed, public-safe summaries. Keep raw or sensitive artifacts in ignored local directories. Do not commit private logs, credential paths, API keys, access material, private provider responses, or local-only operational notes.
 
 ## Evidence Runs
 
@@ -184,6 +201,6 @@ Human-readable normalized comparison:
 
 Future live evidence should add separate records for provider dry runs, provider live runs, GPU dry runs, GPU live runs, and hybrid live runs. Each live record must include source metadata for tokens, latency, cost, runtime, and claim boundaries.
 
-Do not commit raw secrets, API keys, provider credentials, SSH details, GPU credentials, private server logs, sensitive raw benchmark dumps, or private operational transcripts.
+Do not commit raw secrets, API keys, provider credentials, access details, GPU credentials, private runtime logs, sensitive raw benchmark dumps, or private operational transcripts.
 
 Use ignored local directories such as `private/artifacts/`, `private/logs/`, and `private/reports/` for sensitive or unreviewed material.
