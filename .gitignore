@@ -1,0 +1,59 @@
+# Local/private AI Champion workspace material.
+private/
+envs/
+repos/
+docs/handoffs/
+
+# Python caches and build outputs.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments.
+.venv/
+venv/
+env/
+
+# Secrets, local credentials, and access material.
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.env
+.env*
+!.env.example
+config.local.*
+secrets.*
+credentials.*
+
+# Generated artifacts, logs, raw benchmark dumps, and model files.
+*.log
+logs/
+*.trace
+*.prof
+*.ncu-rep
+*.nsys-rep
+*.sqlite
+*.db
+*.parquet
+*.jsonl
+benchmark_outputs/
+raw_benchmark_dumps/
+*.pt
+*.pth
+*.safetensors
+*.gguf
+
+# OS/editor files.
+.DS_Store
+.idea/
+.vscode/
