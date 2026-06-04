@@ -49,7 +49,7 @@ class OpenAILiveAdapterTests(unittest.TestCase):
             captured["timeout_seconds"] = timeout_seconds
             return {
                 "id": "response-test-id",
-                "choices": [{"finish_reason": "stop", "message": {"content": "private response"}}],
+                "choices": [{"finish_reason": "stop", "message": {"content": "mocked adapter output"}}],
                 "usage": {"prompt_tokens": 7, "completion_tokens": 3, "total_tokens": 10},
             }
 

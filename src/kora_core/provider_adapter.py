@@ -193,9 +193,9 @@ def create_provider_adapter(
 ) -> ProviderAdapter:
     """Create a provider adapter.
 
-    Dry-run construction never makes external calls. Live OpenAI construction
-    requires explicit ``allow_live=True`` before a network-capable adapter can
-    be returned.
+    Dry-run construction never makes external calls. Live OpenAI and Bedrock
+    construction requires explicit ``allow_live=True`` before a network-capable
+    adapter can be returned.
     """
 
     provider = validate_provider_id(provider_name)
@@ -203,6 +203,7 @@ def create_provider_adapter(
         return DryRunProviderAdapter(provider_name=provider)
     if mode == "live":
         from kora_core.config import load_provider_config
+        from kora_core.bedrock_live_adapter import BedrockBearerLiveAdapter
         from kora_core.live_provider_adapter import LiveProviderAdapter
         from kora_core.openai_live_adapter import OpenAILiveProviderAdapter
 
@@ -211,5 +212,7 @@ def create_provider_adapter(
             raise ValueError(f"live config provider {selected_config.provider!s} does not match requested {provider!s}")
         if provider == ProviderId.OPENAI:
             return OpenAILiveProviderAdapter(selected_config, allow_live=allow_live, transport=transport)
+        if provider == ProviderId.BEDROCK:
+            return BedrockBearerLiveAdapter(selected_config, allow_live=allow_live, transport=transport)
         return LiveProviderAdapter(selected_config)
     raise ValueError(f"unsupported provider adapter mode {mode!r}")

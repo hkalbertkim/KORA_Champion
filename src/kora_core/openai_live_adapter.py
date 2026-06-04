@@ -16,6 +16,7 @@ from kora_core.config import ProviderConfig, ProviderMode
 from kora_core.cost_model import estimate_provider_placeholder_cost
 from kora_core.evidence import ClaimLevel
 from kora_core.live_provider_adapter import (
+    LiveProviderExecutionNotAllowedError,
     MissingProviderCredentialError,
     LiveProviderNotEnabledError,
     UnsupportedLiveProviderError,
@@ -38,10 +39,6 @@ OPENAI_LIVE_WARNINGS = [
     "not_gpu_evidence",
     "response_text_redacted",
 ]
-
-
-class LiveProviderExecutionNotAllowedError(RuntimeError):
-    """Raised when live execution is requested without the explicit allow flag."""
 
 
 class OpenAILiveProviderAdapter:

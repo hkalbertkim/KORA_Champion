@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -33,7 +34,14 @@ def _parse_args() -> argparse.Namespace:
 def main() -> int:
     args = _parse_args()
     provider = str(validate_provider_id(args.provider))
-    model = args.model or ("gpt-4o-mini" if args.mode == "live" else "dry-run-model")
+    if args.model:
+        model = args.model
+    elif args.mode == "live" and provider == "bedrock":
+        model = os.environ.get("KORA_BEDROCK_MODEL_ID", "")
+    elif args.mode == "live":
+        model = "gpt-4o-mini"
+    else:
+        model = "dry-run-model"
     fixture_path = REPO_ROOT / args.fixture
     result = run_provider_harness(
         fixture_path=fixture_path,

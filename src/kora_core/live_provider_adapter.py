@@ -31,6 +31,10 @@ class UnsupportedLiveProviderError(RuntimeError):
     """Raised when a provider identifier is unsupported by the live boundary."""
 
 
+class LiveProviderExecutionNotAllowedError(RuntimeError):
+    """Raised when live execution lacks an explicit allow flag."""
+
+
 LIVE_BOUNDARY_WARNINGS = [
     "Live provider boundary validated configuration only.",
     "No external provider API call was attempted.",

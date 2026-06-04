@@ -13,10 +13,10 @@ from kora_core.execution_targets import ExecutionTarget
 from kora_core.harness import load_request_fixtures, run_request_harness
 from kora_core.live_provider_adapter import (
     LIVE_BOUNDARY_WARNINGS,
+    LiveProviderExecutionNotAllowedError,
     LiveProviderNotEnabledError,
     MissingProviderCredentialError,
 )
-from kora_core.openai_live_adapter import LiveProviderExecutionNotAllowedError
 from kora_core.provider_adapter import ProviderRequest, create_provider_adapter
 from kora_core.providers import ProviderId, validate_provider_id
 from kora_core.run_record import provider_metrics_from_adapter_results
@@ -203,10 +203,29 @@ def _run_live_boundary(
             provider_request_count=len(provider_records),
             failed_provider_calls=len(provider_records[: max(0, int(max_live_calls))]),
         )
+    except RuntimeError as exc:
+        return ProviderHarnessResult(
+            mode=str(ProviderMode.LIVE),
+            selected_provider=str(provider),
+            selected_model=model_name,
+            provider_calls=0,
+            input_tokens=0,
+            output_tokens=0,
+            total_tokens=0,
+            estimated_provider_cost=None,
+            actual_provider_cost=None,
+            has_real_provider_data=False,
+            claim_level=str(ClaimLevel.DRY_RUN),
+            warnings=["Live provider harness failed safely during provider execution."],
+            errors=[str(exc)],
+            evidence_status="live_execution_error",
+            provider_request_count=len(provider_records),
+            failed_provider_calls=len(provider_records[: max(0, int(max_live_calls))]),
+        )
 
     successful_provider_calls = sum(1 for result in adapter_results if result.has_real_provider_data)
     failed_provider_calls = len(adapter_results) - successful_provider_calls
-    has_real_provider_data = successful_provider_calls > 0 and provider == ProviderId.OPENAI
+    has_real_provider_data = successful_provider_calls > 0 and provider in {ProviderId.OPENAI, ProviderId.BEDROCK}
     claim_level = ClaimLevel.MEASURED_PROVIDER if has_real_provider_data else ClaimLevel.DRY_RUN
     evidence_status = "live_measured_provider" if has_real_provider_data else "live_boundary_not_implemented"
     warnings = (

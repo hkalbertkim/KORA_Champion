@@ -112,6 +112,20 @@ KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai KORA_OPENAI_API_KEY=replace-wi
 
 This command is intentionally limited to one provider-routed fixture request by default. Do not commit unsanitized live evidence, and do not interpret a single live measurement as provider savings evidence.
 
+AI Champion Bedrock live measurement path:
+
+```bash
+export KORA_PROVIDER_MODE=live
+export KORA_LIVE_PROVIDER=bedrock
+export KORA_BEDROCK_API_KEY="replace-with-your-token"
+export KORA_AWS_REGION="us-east-1"
+export KORA_BEDROCK_MODEL_ID="anthropic.claude-haiku-4-5-20251001-v1:0"
+
+python3 scripts/run_provider_harness.py --mode live --provider bedrock --allow-live --max-live-calls 1
+```
+
+The Bedrock adapter adds the required `us.` model prefix when missing. Do not commit tokens or unsanitized live evidence.
+
 ## Public-Safety Note
 
 This repository must not contain secrets, private provider credentials, GPU credentials, SSH credentials, raw private logs, or private infrastructure details. Use ignored local/private directories for sensitive operational artifacts.

@@ -149,6 +149,20 @@ Example bounded live command:
 KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai KORA_OPENAI_API_KEY=replace-with-your-key python3 scripts/run_provider_harness.py --mode live --provider openai --model gpt-4o-mini --allow-live --max-live-calls 1
 ```
 
+AI Champion Bedrock live command:
+
+```bash
+export KORA_PROVIDER_MODE=live
+export KORA_LIVE_PROVIDER=bedrock
+export KORA_BEDROCK_API_KEY="replace-with-your-token"
+export KORA_AWS_REGION="us-east-1"
+export KORA_BEDROCK_MODEL_ID="anthropic.claude-haiku-4-5-20251001-v1:0"
+
+python3 scripts/run_provider_harness.py --mode live --provider bedrock --allow-live --max-live-calls 1
+```
+
+Bedrock live evidence is measured provider evidence only when a real call succeeds. It is not cost-reduction evidence, baseline-vs-live comparison evidence, or GPU evidence.
+
 ## Future Live Evidence Plan
 
 Future live evidence should add separate records for provider dry runs, provider live runs, GPU dry runs, GPU live runs, and hybrid live runs. Each live record must include source metadata for tokens, latency, cost, runtime, and claim boundaries.
