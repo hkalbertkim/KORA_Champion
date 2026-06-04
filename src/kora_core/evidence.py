@@ -154,6 +154,17 @@ def synthetic_claim_warnings() -> list[str]:
     ]
 
 
+def provider_dry_run_warnings() -> list[str]:
+    """Return standard warnings for provider dry-run evidence."""
+
+    return [
+        "Provider dry-run evidence validates adapter shape and accounting fields only.",
+        "Provider dry-run evidence does not include real provider API responses.",
+        "Provider dry-run evidence does not prove real token, latency, or cost reduction.",
+        "Provider dry-run evidence must not be reported as measured provider evidence.",
+    ]
+
+
 def to_plain_dict(value: Any) -> Any:
     """Convert nested dataclasses and enums into JSON-compatible values."""
 

@@ -102,6 +102,8 @@ Supported claim levels:
 - `measured_gpu`: measured GPU evidence exists
 - `measured_hybrid`: measured provider and GPU evidence exist
 
+Provider dry-run records use `dry_run`. They may populate provider name, model name, provider call count, local token estimates, placeholder latency, placeholder estimated provider cost, and warnings. They must keep `actual_provider_cost` as `null`, `has_real_provider_data` as `false`, and must not be interpreted as measured provider evidence.
+
 ## What Synthetic Evidence Can Prove
 
 Synthetic evidence can prove:

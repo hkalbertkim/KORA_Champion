@@ -73,6 +73,25 @@ Human-readable synthetic comparison:
 
 - [Baseline vs KORA Synthetic Report](baseline-vs-kora-synthetic-report.md)
 
+## Provider Dry-Run Evidence
+
+`docs/evidence/provider-dry-runs/` stores reviewed provider-shaped dry-run records. These records validate adapter shape and accounting fields without external calls.
+
+Generate provider dry-run evidence:
+
+```bash
+python3 scripts/provider_dry_run.py
+```
+
+Default provider label: `local_mock`.
+
+Interpretation guide:
+
+- Provider dry-run evidence can show request shape, placeholder token counts, placeholder costs, and dry-run warnings.
+- Provider dry-run evidence is not real provider evidence.
+- `actual_provider_cost` must remain `null`.
+- `has_real_provider_data` must remain `false`.
+
 ## Future Live Evidence Plan
 
 Future live evidence should add separate records for provider dry runs, provider live runs, GPU dry runs, GPU live runs, and hybrid live runs. Each live record must include source metadata for tokens, latency, cost, runtime, and claim boundaries.

@@ -28,6 +28,7 @@ from kora_core.evidence import (
     synthetic_claim_warnings,
     to_plain_dict,
 )
+from kora_core.provider_adapter import ProviderAdapterResult
 
 
 REQUIRED_TOP_LEVEL_FIELDS = {
@@ -241,6 +242,46 @@ def create_run_record_from_harness(
             claim_level=claim_level,
             claim_warnings=synthetic_claim_warnings() if is_synthetic else [],
         ),
+    )
+
+
+def provider_metrics_from_adapter_results(results: list[ProviderAdapterResult]) -> ProviderMetrics:
+    """Aggregate provider dry-run adapter results into evidence metrics."""
+
+    input_tokens = sum(result.usage.input_tokens for result in results)
+    output_tokens = sum(result.usage.output_tokens for result in results)
+    estimated_cost = round(sum(result.cost.estimated_provider_cost for result in results), 8)
+    provider_breakdown: dict[str, Any] = {}
+    for result in results:
+        provider = result.response.provider_name
+        item = provider_breakdown.setdefault(
+            provider,
+            {
+                "provider_calls": 0,
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "total_tokens": 0,
+                "estimated_provider_cost": 0.0,
+                "actual_provider_cost": None,
+            },
+        )
+        item["provider_calls"] += result.provider_calls
+        item["input_tokens"] += result.usage.input_tokens
+        item["output_tokens"] += result.usage.output_tokens
+        item["total_tokens"] += result.usage.total_tokens
+        item["estimated_provider_cost"] = round(
+            item["estimated_provider_cost"] + result.cost.estimated_provider_cost,
+            8,
+        )
+    return ProviderMetrics(
+        provider_calls=sum(result.provider_calls for result in results),
+        avoided_provider_calls=0,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        total_tokens=input_tokens + output_tokens,
+        estimated_provider_cost=estimated_cost,
+        actual_provider_cost=None,
+        provider_breakdown=provider_breakdown,
     )
 
 
