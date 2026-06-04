@@ -86,6 +86,24 @@ KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=local_mock python3 scripts/check_prov
 
 The current live adapter is a boundary only. It validates config and refuses missing live requirements, but it does not call provider APIs and does not produce measured provider evidence.
 
+## Provider Harness
+
+Run the canonical provider harness in dry-run mode:
+
+```bash
+python3 scripts/run_provider_harness.py
+```
+
+The harness runs only provider-routed fixture requests, writes JSON under `docs/evidence/provider-harness/`, and defaults to `dry_run`.
+
+Live mode is gated and still boundary-only:
+
+```bash
+KORA_PROVIDER_MODE=live KORA_LIVE_PROVIDER=openai python3 scripts/run_provider_harness.py --mode live --provider openai
+```
+
+Without required config, live mode fails safely. With valid config, the current boundary still does not call provider APIs or produce measured provider evidence.
+
 ## Public-Safety Note
 
 This repository must not contain secrets, private provider credentials, GPU credentials, SSH credentials, raw private logs, or private infrastructure details. Use ignored local/private directories for sensitive operational artifacts.

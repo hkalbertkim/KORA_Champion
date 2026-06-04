@@ -92,6 +92,24 @@ Interpretation guide:
 - `actual_provider_cost` must remain `null`.
 - `has_real_provider_data` must remain `false`.
 
+## Provider Harness Evidence
+
+`docs/evidence/provider-harness/` stores reviewed provider harness records. This is the canonical dry-run-to-live provider evidence entrypoint.
+
+Run the canonical provider harness:
+
+```bash
+python3 scripts/run_provider_harness.py
+```
+
+Dry-run output with `evidence_status: dry_run_complete` validates the provider harness path, provider-routed fixture selection, placeholder token/cost fields, warnings, and JSON evidence shape.
+
+Live output with `evidence_status: live_config_error` means live mode was requested but required config was missing. This is a safe failure and not provider evidence.
+
+Live output with `evidence_status: live_boundary_not_implemented` means config passed the boundary, but no concrete live adapter exists yet. This is also not measured provider evidence.
+
+Dry-run and live-boundary evidence must not be interpreted as real provider evidence.
+
 ## Live Provider Evidence Boundary
 
 Live provider evidence requires explicit live mode:

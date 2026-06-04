@@ -1,0 +1,75 @@
+{
+  "actual_provider_cost": null,
+  "adapter_results": [
+    {
+      "claim_level": "dry_run",
+      "cost": {
+        "actual_provider_cost": null,
+        "currency": "USD",
+        "estimated_provider_cost": 1.3e-05,
+        "is_placeholder": true
+      },
+      "external_call_attempted": false,
+      "has_real_provider_data": false,
+      "latency": {
+        "is_placeholder": true,
+        "latency_ms": 0.022458
+      },
+      "provider_calls": 1,
+      "request": {
+        "metadata": {
+          "mode": "dry_run",
+          "source": "provider_harness"
+        },
+        "model_name": "dry-run-model",
+        "provider_name": "local_mock",
+        "request_id": "provider-001"
+      },
+      "response": {
+        "metadata": {
+          "mode": "dry_run"
+        },
+        "model_name": "dry-run-model",
+        "output_text": "dry_run_response:provider-001:866e61402674",
+        "provider_name": "local_mock",
+        "request_id": "provider-001"
+      },
+      "usage": {
+        "input_tokens": 11,
+        "output_tokens": 1,
+        "total_tokens": 12
+      },
+      "warnings": [
+        "Provider adapter result is dry-run only.",
+        "No external provider API call was attempted.",
+        "Token, latency, and cost values are deterministic placeholders.",
+        "Dry-run evidence must not be used as real provider performance or cost evidence."
+      ]
+    }
+  ],
+  "claim_level": "dry_run",
+  "errors": [],
+  "estimated_provider_cost": 1.3e-05,
+  "evidence_status": "dry_run_complete",
+  "external_calls_attempted": false,
+  "fixture_path": "tests/fixtures/sample_requests.json",
+  "has_real_provider_data": false,
+  "input_tokens": 11,
+  "mode": "dry_run",
+  "output_tokens": 1,
+  "provider_calls": 1,
+  "provider_request_count": 1,
+  "run_type": "provider_harness_dry_run",
+  "selected_model": "dry-run-model",
+  "selected_provider": "local_mock",
+  "total_tokens": 12,
+  "warnings": [
+    "Provider harness ran in dry-run mode.",
+    "No external provider API call was attempted.",
+    "Harness evidence is not measured provider evidence.",
+    "Provider dry-run evidence validates adapter shape and accounting fields only.",
+    "Provider dry-run evidence does not include real provider API responses.",
+    "Provider dry-run evidence does not prove real token, latency, or cost reduction.",
+    "Provider dry-run evidence must not be reported as measured provider evidence."
+  ]
+}

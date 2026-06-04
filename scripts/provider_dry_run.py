@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Generate provider-shaped dry-run evidence without external calls."""
+"""Generate provider-shaped dry-run evidence without external calls.
+
+`scripts/run_provider_harness.py` is the canonical dry-run-to-live provider
+harness entrypoint. This script is retained for the Task 007 dry-run artifact
+flow.
+"""
 
 from __future__ import annotations
 

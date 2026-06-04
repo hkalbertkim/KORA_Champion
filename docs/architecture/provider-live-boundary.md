@@ -77,6 +77,10 @@ python3 scripts/check_provider_config.py
 
 Dry-run mode exits successfully even with no credentials. Live mode exits nonzero when required provider config is missing.
 
+## Provider Harness Use
+
+`scripts/run_provider_harness.py` uses this live boundary when live mode is requested. The harness validates config and records a boundary status, but it still does not call providers in Task 009.
+
 ## Future Live Provider Plan
 
 Future live-provider work should add provider-specific adapters behind this boundary, including:
