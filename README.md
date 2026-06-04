@@ -126,6 +126,12 @@ python3 scripts/run_provider_harness.py --mode live --provider bedrock --allow-l
 
 The Bedrock adapter adds the required `us.` model prefix when missing. Do not commit tokens or unsanitized live evidence.
 
+Current evidence status:
+
+- first Bedrock live provider measurement exists
+- normalized partial live comparison exists
+- full workload live comparison is not yet complete
+
 ## Public-Safety Note
 
 This repository must not contain secrets, private provider credentials, GPU credentials, SSH credentials, raw private logs, or private infrastructure details. Use ignored local/private directories for sensitive operational artifacts.

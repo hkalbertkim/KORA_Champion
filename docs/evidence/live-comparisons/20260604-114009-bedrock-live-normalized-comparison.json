@@ -1,0 +1,62 @@
+{
+  "claim_warnings": [
+    "partial_live_provider_only",
+    "not_full_workload_live_comparison",
+    "not_cost_reduction_evidence",
+    "not_token_reduction_evidence",
+    "not_gpu_evidence",
+    "not_infrastructure_reduction_evidence"
+  ],
+  "claims_cost_reduction": false,
+  "claims_gpu_reduction": false,
+  "claims_infrastructure_reduction": false,
+  "claims_latency_reduction": false,
+  "claims_token_reduction": false,
+  "comparison_claim_level": "measured_provider_partial",
+  "comparison_type": "partial_live_provider",
+  "kora_synthetic_provider_calls": 1,
+  "measured_estimated_provider_cost": 0.000275,
+  "measured_failed_provider_calls": 0,
+  "measured_latency_ms": 2187.0,
+  "measured_provider_calls": 1,
+  "measured_successful_provider_calls": 1,
+  "measured_tokens": 147,
+  "normalized_live_measurement": {
+    "actual_provider_cost": null,
+    "claim_level": "measured_provider",
+    "estimated_provider_cost": 0.000275,
+    "evidence_path": "docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json",
+    "evidence_status": "live_measured_provider",
+    "failed_provider_calls": 0,
+    "has_real_provider_data": true,
+    "input_tokens": 19,
+    "measured_latency_ms": 2187.0,
+    "model": "anthropic.claude-haiku-4-5-20251001-v1:0",
+    "output_tokens": 128,
+    "provider": "bedrock",
+    "provider_calls": 1,
+    "response_text_redacted": true,
+    "run_type": "provider_harness_live",
+    "successful_provider_calls": 1,
+    "total_tokens": 147,
+    "warnings": [
+      "single_provider_live_measurement",
+      "not_cost_reduction_evidence",
+      "not_gpu_evidence",
+      "response_text_redacted"
+    ]
+  },
+  "synthetic_baseline_provider_calls": 6,
+  "synthetic_reference": {
+    "baseline_policy": "all_provider_api",
+    "baseline_provider_calls": 6,
+    "kora_policy": "classifier_router_harness",
+    "kora_provider_calls": 1,
+    "synthetic_only_provider_call_reduction_percentage": 83.3333,
+    "synthetic_placeholder_baseline_cost": 0.06,
+    "synthetic_placeholder_kora_cost": 0.0112,
+    "synthetic_warning": "synthetic fields are not measured live savings evidence",
+    "workload_id": "sample_requests_v0_1"
+  },
+  "workload_size": 6
+}

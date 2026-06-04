@@ -29,7 +29,7 @@ Runtime telemetry evidence should include route counts, provider-call avoided fl
 
 ## Provider Evidence
 
-Provider evidence must identify the provider family, model or runtime identifier, call count, token accounting source, latency method, cost source, and whether a real call was attempted. Credentials and raw provider responses with sensitive content must not be committed.
+Provider evidence must identify the provider family, model or runtime identifier, call count, token accounting source, latency method, cost source, and whether a real call was attempted. Credentials and raw provider responses with sensitive material must not be committed.
 
 ## GPU Evidence
 
@@ -41,7 +41,7 @@ Dashboard screenshots may be committed only after review for secrets, private ho
 
 ## Safety Rules For Evidence Artifacts
 
-Commit only reviewed, public-safe summaries. Keep raw or sensitive artifacts in ignored local directories. Do not commit private logs, credential paths, API keys, SSH material, private provider responses, or local-only handoff notes.
+Commit only reviewed, public-safe summaries. Keep raw or sensitive artifacts in ignored local directories. Do not commit private logs, credential paths, API keys, SSH material, private provider responses, or local-only operational notes.
 
 ## Evidence Runs
 
@@ -137,9 +137,9 @@ Secrets must never be committed. Keep local provider config in ignored local fil
 Live evidence safety rules:
 
 - Do not commit unsanitized live evidence.
-- Do not commit API keys, account identifiers, private prompts, private responses, or raw provider payloads.
+- Do not commit API keys, account identifiers, private inputs, private responses, or raw provider payloads.
 - Response text should be redacted by default.
-- Prompt text should be synthetic fixture text or redacted.
+- Input text should be synthetic fixture text or redacted.
 - `actual_provider_cost` remains `null` unless a reviewed cost source is added.
 - A single live provider measurement is not cost-reduction evidence by itself.
 
@@ -162,6 +162,23 @@ python3 scripts/run_provider_harness.py --mode live --provider bedrock --allow-l
 ```
 
 Bedrock live evidence is measured provider evidence only when a real call succeeds. It is not cost-reduction evidence, baseline-vs-live comparison evidence, or GPU evidence.
+
+## Live Comparisons
+
+`docs/evidence/live-comparisons/` stores reviewed normalized live comparison records.
+
+Current normalized Bedrock live comparison:
+
+- input evidence: `docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json`
+- comparison type: `partial_live_provider`
+- claim level: `measured_provider_partial`
+- interpretation: one measured provider-routed request normalized into the existing comparison framework
+
+This is not full workload live comparison evidence. It is not cost-reduction, token-reduction, latency-reduction, GPU-reduction, or infrastructure-reduction evidence.
+
+Human-readable normalized comparison:
+
+- [Bedrock Live Normalized Comparison Report](bedrock-live-normalized-comparison-report.md)
 
 ## Future Live Evidence Plan
 
