@@ -15,6 +15,30 @@ Expected evidence types:
 - reproducibility commands
 - claim boundary notes
 
+## Synthetic Fixture Evidence
+
+Synthetic fixture evidence belongs in reviewed docs or test fixtures. It may include public-safe request shapes, expected route decisions, cache hit/miss behavior, and local smoke-test summaries. It must not include real user data.
+
+## Runtime Telemetry Evidence
+
+Runtime telemetry evidence should include route counts, provider-call avoided flags, token counters, latency counters, placeholder or real cost fields, and the source of each measurement. Synthetic placeholder telemetry must be labeled as synthetic/offline.
+
+## Provider Evidence
+
+Provider evidence must identify the provider family, model or runtime identifier, call count, token accounting source, latency method, cost source, and whether a real call was attempted. Credentials and raw provider responses with sensitive content must not be committed.
+
+## GPU Evidence
+
+GPU evidence must identify only public-safe runtime configuration and aggregate measurements suitable for release. Private server details, credentials, raw logs, and operational access notes must stay in ignored private storage.
+
+## Dashboard Screenshots
+
+Dashboard screenshots may be committed only after review for secrets, private hostnames, account identifiers, raw logs, and unreleased claims. Prefer synthetic or sanitized screenshots until real evidence is approved.
+
+## Safety Rules For Evidence Artifacts
+
+Commit only reviewed, public-safe summaries. Keep raw or sensitive artifacts in ignored local directories. Do not commit private logs, credential paths, API keys, SSH material, private provider responses, or local-only handoff notes.
+
 Do not commit raw secrets, API keys, provider credentials, SSH details, GPU credentials, private server logs, sensitive raw benchmark dumps, or private operational transcripts.
 
 Use ignored local directories such as `private/artifacts/`, `private/logs/`, and `private/reports/` for sensitive or unreviewed material.

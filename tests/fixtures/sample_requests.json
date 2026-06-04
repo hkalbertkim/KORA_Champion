@@ -1,0 +1,39 @@
+[
+  {
+    "id": "deterministic-001",
+    "category": "normalization",
+    "prompt": "Normalize the tag list without inference.",
+    "deterministic_available": true
+  },
+  {
+    "id": "cacheable-001",
+    "category": "retrieval",
+    "prompt": "Fetch reusable routing summary for account class alpha.",
+    "cache_eligible": true,
+    "cache_key": "fixture-cache-alpha"
+  },
+  {
+    "id": "gpu-001",
+    "category": "local-vision",
+    "prompt": "Classify a synthetic image batch using a local runtime.",
+    "requires_gpu": true
+  },
+  {
+    "id": "provider-001",
+    "category": "open-ended-reasoning",
+    "prompt": "Draft a novel answer where no local rule or cache applies.",
+    "provider_required": true
+  },
+  {
+    "id": "cpu-001",
+    "category": "local-transform",
+    "prompt": "Run a small local transformation."
+  },
+  {
+    "id": "cacheable-002",
+    "category": "retrieval",
+    "prompt": "Fetch reusable routing summary for account class alpha.",
+    "cache_eligible": true,
+    "cache_key": "fixture-cache-alpha"
+  }
+]

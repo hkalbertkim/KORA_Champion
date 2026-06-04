@@ -17,6 +17,9 @@ class TelemetryEvent:
     target: ExecutionTarget
     provider_call_avoided: bool
     estimated_cost: float
+    latency_ms: float | None = None
+    input_tokens: int = 0
+    output_tokens: int = 0
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
@@ -27,6 +30,9 @@ def record_event(
     target: ExecutionTarget | str,
     provider_call_avoided: bool,
     estimated_cost: float = 0.0,
+    latency_ms: float | None = None,
+    input_tokens: int = 0,
+    output_tokens: int = 0,
     metadata: dict[str, Any] | None = None,
 ) -> TelemetryEvent:
     """Append one event to an in-memory event list and return it."""
@@ -36,6 +42,9 @@ def record_event(
         target=ExecutionTarget(target),
         provider_call_avoided=bool(provider_call_avoided),
         estimated_cost=float(estimated_cost),
+        latency_ms=latency_ms,
+        input_tokens=max(0, int(input_tokens)),
+        output_tokens=max(0, int(output_tokens)),
         metadata=dict(metadata or {}),
     )
     events.append(event)
@@ -49,6 +58,9 @@ def summarize_events(events: Iterable[TelemetryEvent]) -> dict[str, Any]:
     target_counts: dict[str, int] = {}
     avoided_provider_calls = 0
     explicit_estimated_cost = 0.0
+    total_input_tokens = 0
+    total_output_tokens = 0
+    latencies: list[float | None] = []
 
     for event in event_list:
         target_key = event.target.value
@@ -56,6 +68,9 @@ def summarize_events(events: Iterable[TelemetryEvent]) -> dict[str, Any]:
         if event.provider_call_avoided:
             avoided_provider_calls += 1
         explicit_estimated_cost += event.estimated_cost
+        total_input_tokens += event.input_tokens
+        total_output_tokens += event.output_tokens
+        latencies.append(event.latency_ms)
 
     fallback_cost = estimate_total_cost(target_counts)
     estimated_cost = explicit_estimated_cost if event_list else 0.0
@@ -67,4 +82,11 @@ def summarize_events(events: Iterable[TelemetryEvent]) -> dict[str, Any]:
         "target_counts": dict(sorted(target_counts.items())),
         "avoided_provider_calls": avoided_provider_calls,
         "estimated_cost": round(estimated_cost, 8),
+        "total_input_tokens": total_input_tokens,
+        "total_output_tokens": total_output_tokens,
+        "total_latency_ms": (
+            round(sum(latency for latency in latencies if latency is not None), 6)
+            if latencies and all(latency is not None for latency in latencies)
+            else None
+        ),
     }

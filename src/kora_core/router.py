@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Mapping
 
+from kora_core.classifier import RequestClassification, classify_request
 from kora_core.execution_targets import ExecutionTarget
 
 
@@ -22,7 +23,11 @@ def _flag(request: Mapping[str, Any], name: str) -> bool:
     return bool(request.get(name, False))
 
 
-def route_request(request: Mapping[str, Any]) -> RouteDecision:
+def route_request(
+    request: Mapping[str, Any],
+    *,
+    classification: RequestClassification | None = None,
+) -> RouteDecision:
     """Route one request without making external calls.
 
     Priority order is deterministic, cache, local GPU, provider API, then CPU.
@@ -30,10 +35,10 @@ def route_request(request: Mapping[str, Any]) -> RouteDecision:
     request explicitly declares that path is available.
     """
 
-    request_id = request.get("id") or request.get("request_id")
-    metadata = {"request_id": request_id} if request_id is not None else {}
+    selected_classification = classification or classify_request(request)
+    metadata = {"request_id": selected_classification.request_id, **selected_classification.metadata}
 
-    if _flag(request, "deterministic_available"):
+    if selected_classification.deterministic_available:
         return RouteDecision(
             target=ExecutionTarget.DETERMINISTIC,
             reason="deterministic_available",
@@ -41,7 +46,7 @@ def route_request(request: Mapping[str, Any]) -> RouteDecision:
             metadata=metadata,
         )
 
-    if _flag(request, "cache_hit"):
+    if selected_classification.cache_hit:
         return RouteDecision(
             target=ExecutionTarget.CACHE,
             reason="cache_hit",
@@ -49,7 +54,7 @@ def route_request(request: Mapping[str, Any]) -> RouteDecision:
             metadata=metadata,
         )
 
-    if _flag(request, "requires_gpu"):
+    if selected_classification.requires_gpu:
         return RouteDecision(
             target=ExecutionTarget.LOCAL_GPU,
             reason="requires_gpu",
@@ -57,7 +62,7 @@ def route_request(request: Mapping[str, Any]) -> RouteDecision:
             metadata=metadata,
         )
 
-    if _flag(request, "provider_required"):
+    if selected_classification.provider_required:
         return RouteDecision(
             target=ExecutionTarget.PROVIDER_API,
             reason="provider_required",
