@@ -1,0 +1,94 @@
+{
+  "baseline_comparison": {
+    "baseline_limitations": [
+      "All-GPU baseline runtime is estimated from compute weight, not fully measured.",
+      "Synthetic GPU operations approximate benchmark classes and are not model inference."
+    ],
+    "baseline_method": "compute_weight_scaled_from_measured_routed_subset",
+    "estimated_all_gpu_runtime_seconds": 5.429518,
+    "estimated_avoided_gpu_runtime_seconds": 1.710121,
+    "estimated_kora_full_gpu_subset_runtime_seconds": 3.719397,
+    "estimated_runtime_reduction_percentage": 31.496734,
+    "measured_kora_subset_runtime_seconds": 1.752106
+  },
+  "claim_boundary": {
+    "customer_workload_claim": false,
+    "full_production_representativeness_claim": false,
+    "measured_h100_routed_subset": true,
+    "production_cost_savings_claim": false,
+    "provider_cost_claim": false
+  },
+  "claim_level": "gpu_routed_subset_measured",
+  "gpu_runtime": {
+    "checksum": null,
+    "cuda_available": true,
+    "error_count": 0,
+    "error_rate": 0.0,
+    "gpu_count": 2,
+    "gpu_memory_mb_avg": 600.0,
+    "gpu_memory_mb_max": 717.0,
+    "gpu_memory_total_mb": null,
+    "gpu_models": [
+      "NVIDIA H100 80GB HBM3"
+    ],
+    "gpu_utilization_avg": 15.444444,
+    "gpu_utilization_max": 23.0,
+    "output_digest": "c77db6eb26e4ff98bc6a21e0a5491fbd5512f671654dc5428ea0a88b2a7a8b62",
+    "per_class_counts": {
+      "embedding_index_query_large": 2145,
+      "embedding_similarity": 1420,
+      "gpu_batch_embedding": 2145,
+      "gpu_tensor_transform": 2145,
+      "rerank_batch_large": 2145
+    },
+    "per_class_runtime_seconds": {},
+    "python_version": "3.10",
+    "runtime_seconds": 1.752106,
+    "sampling_interval_seconds": 0.2,
+    "sampling_method": "nvidia-smi",
+    "throughput_compute_weight_per_second": 1279400.497529,
+    "throughput_requests_per_second": 5707.417245,
+    "torch_available": true,
+    "torch_version": "2.5.1+cu121"
+  },
+  "h100_execution": true,
+  "live_provider_execution": false,
+  "measured_subset": {
+    "measured_subset_compute_weight": 2241645.288123,
+    "measured_subset_count": 10000,
+    "measured_subset_limit": 10000,
+    "measured_subset_selection_method": "deterministic_first_n_local_gpu_routes",
+    "measured_subset_sha256": "87e6aad84996ea9aef9648dc3c0702badd72830caed2dabb94ecdc821cba2a46"
+  },
+  "profile": "mixed_realistic_100k",
+  "router": "kora_router_adapter",
+  "routing_source_metrics": {
+    "acceptable_route_rate": 1.0,
+    "all_gpu_baseline_compute_weight": 6946527.767705,
+    "compute_weighted_gpu_reduction_percentage_vs_all_gpu": 31.496734,
+    "exact_route_accuracy": 0.98477,
+    "fallback_rate": 0.0909,
+    "kora_local_gpu_compute_weight": 4758598.401301,
+    "kora_local_gpu_routed_count": 21203,
+    "kora_local_gpu_routed_percentage": 21.203,
+    "total_requests": 100000,
+    "unsafe_misroute_rate": 0.0
+  },
+  "run_id": "gpu004c-20260605124147-87e6aad84996",
+  "run_metadata": {
+    "claim_level": "gpu_routed_subset_measured",
+    "h100_execution": true,
+    "live_provider_execution": false,
+    "profile": "mixed_realistic_100k",
+    "router": "kora_router_adapter",
+    "run_id": "gpu004c-20260605124147-87e6aad84996",
+    "source_comparison_run": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json",
+    "source_summary_run": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000-summary.json",
+    "task_id": "KORA-CHAMPION-GPU-004C",
+    "timestamp_utc": "2026-06-05T12:41:47.937820+00:00"
+  },
+  "source_comparison_run": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json",
+  "source_summary_run": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000-summary.json",
+  "task_id": "KORA-CHAMPION-GPU-004C",
+  "timestamp_utc": "2026-06-05T12:41:47.937820+00:00"
+}
