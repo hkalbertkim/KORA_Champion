@@ -47,10 +47,16 @@ GPU evidence interpretation:
 - Run files should contain only sanitized aggregate measurements.
 - GPU live measurements are not complete yet.
 - Do not commit credentials, private access details, private paths, endpoint details, or raw operational logs.
+- GPU smoke records with `claim_level: gpu_schema_only` validate the evidence path only.
+- GPU smoke records with `claim_level: gpu_smoke_measured` require a completed CUDA workload.
 
 Current GPU plan:
 
 - [GPU Evidence Plan](gpu-evidence-plan.md)
+
+Current GPU smoke report:
+
+- [GPU Smoke Run Report](gpu-smoke-run-report.md)
 
 ## Dashboard Screenshots
 

@@ -17,6 +17,7 @@ Status: public-safe planning outline for KORA Core and AI Champion evidence.
 - KORA-CHAMPION-012 establishes the AI Champion Bedrock token-auth live provider adapter.
 - KORA-CHAMPION-013 normalizes the first Bedrock live provider evidence into the comparison framework.
 - KORA-CHAMPION-GPU-001 starts the GPU evidence track immediately because H100 x2 access ends on 2026-07-01.
+- KORA-CHAMPION-GPU-002 adds the bounded GPU smoke workload path and collects first H100 smoke evidence if remote access is available.
 
 ## June Week 2: Provider And Runtime Integration
 

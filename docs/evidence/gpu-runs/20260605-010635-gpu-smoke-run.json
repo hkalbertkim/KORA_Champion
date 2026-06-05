@@ -1,0 +1,48 @@
+{
+  "benchmark_type": "gpu_smoke",
+  "claim_level": "gpu_schema_only",
+  "cuda_available": false,
+  "ended_at_utc": "2026-06-05T01:06:35.033257+00:00",
+  "failed_units": 0,
+  "gpu_count": 0,
+  "gpu_memory_average_mb": null,
+  "gpu_memory_max_mb": null,
+  "gpu_model": [],
+  "gpu_utilization_average": null,
+  "gpu_utilization_max": null,
+  "runtime_seconds": 0.0,
+  "snapshot_after": {
+    "captured_at_utc": "2026-06-05T01:06:35.033398+00:00",
+    "collector": "nvidia-smi",
+    "cuda_available": false,
+    "gpu_count": 0,
+    "gpus": [],
+    "status": "unavailable",
+    "warnings": [
+      "nvidia_smi_not_available"
+    ]
+  },
+  "snapshot_before": {
+    "captured_at_utc": "2026-06-05T01:06:32.447639+00:00",
+    "collector": "nvidia-smi",
+    "cuda_available": false,
+    "gpu_count": 0,
+    "gpus": [],
+    "status": "unavailable",
+    "warnings": [
+      "nvidia_smi_not_available"
+    ]
+  },
+  "started_at_utc": "2026-06-05T01:06:32.447259+00:00",
+  "successful_units": 0,
+  "throughput_units_per_second": null,
+  "torch_available": true,
+  "warnings": [
+    "cuda_not_available",
+    "gpu_smoke_not_measured",
+    "nvidia_smi_snapshot_unavailable"
+  ],
+  "workload_id": "gpu_smoke_100",
+  "workload_size": 100,
+  "workload_unit_type": "matrix_multiply_unit"
+}
