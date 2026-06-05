@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import StrEnum
 from typing import Any, Mapping
 
+from kora_core.compat import StrEnum
 from kora_core.cost_model import estimate_request_cost, estimate_total_cost
 from kora_core.evidence import ClaimLevel, synthetic_claim_warnings
 from kora_core.execution_targets import ExecutionTarget

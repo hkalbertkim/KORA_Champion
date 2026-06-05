@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
-from enum import StrEnum
 from typing import Any, Mapping
 
+from kora_core.compat import StrEnum
 
 class RunType(StrEnum):
     """Allowed run types for evidence records."""

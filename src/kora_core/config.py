@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from enum import StrEnum
 from typing import Mapping
 
+from kora_core.compat import StrEnum
 from kora_core.providers import ProviderId, validate_provider_id
 
 
@@ -70,7 +70,7 @@ class ProviderConfig:
             "provider": str(self.provider),
             "live_enabled": self.live_enabled,
             "required_fields_missing": self.missing_required_fields(),
-            "credentials": {
+            "secret_fields": {
                 ENV_OPENAI_KEY: _presence(values[ENV_OPENAI_KEY]),
                 ENV_ANTHROPIC_KEY: _presence(values[ENV_ANTHROPIC_KEY]),
                 ENV_GEMINI_KEY: _presence(values[ENV_GEMINI_KEY]),

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from enum import StrEnum
+from kora_core.compat import StrEnum
 
 
 class ExecutionTarget(StrEnum):

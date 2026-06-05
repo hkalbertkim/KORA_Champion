@@ -3,14 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-try:
-    from enum import StrEnum
-except ImportError:  # Python 3.10 remote GPU runtimes.
-    from enum import Enum
-
-    class StrEnum(str, Enum):
-        pass
 from typing import Any, Mapping
+
+from kora_core.compat import StrEnum
 
 
 class RoutePath(StrEnum):

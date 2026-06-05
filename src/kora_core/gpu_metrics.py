@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import StrEnum
 from statistics import mean
 from typing import Any, Iterable
+
+from kora_core.compat import StrEnum
 
 
 class GPUClaimLevel(StrEnum):

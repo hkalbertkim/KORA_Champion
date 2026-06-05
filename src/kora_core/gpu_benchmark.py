@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import StrEnum
 from typing import Any
+
+from kora_core.compat import StrEnum
 
 
 class GPUBenchmarkStage(StrEnum):
@@ -118,7 +119,7 @@ def build_default_gpu_benchmark_plan() -> GPUBenchmarkPlan:
         stages=stages,
         evidence_required_per_stage=evidence_required,
         safety_notes=[
-            "Do not include credentials or private access details in public evidence.",
+            "Do not include secret material or private access details in public evidence.",
             "Do not include machine access metadata in public evidence.",
             "Run larger stages only after smoke evidence passes automated validation.",
         ],
