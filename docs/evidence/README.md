@@ -58,6 +58,16 @@ Current GPU smoke report:
 
 - [GPU Smoke Run Report](gpu-smoke-run-report.md)
 
+First H100 smoke measurement:
+
+- evidence: `docs/evidence/gpu-runs/20260605-012607-gpu-smoke-run.json`
+- workload size: 100
+- GPU count observed: 2
+- GPU model observed: NVIDIA H100 80GB HBM3
+- claim level: `gpu_smoke_measured`
+
+This is bounded smoke evidence only. It is not GPU reduction, infrastructure reduction, or production savings evidence.
+
 ## Dashboard Screenshots
 
 Dashboard screenshots may be committed only after review for secrets, private access labels, account identifiers, raw logs, and unreleased claims. Prefer synthetic or sanitized screenshots until real evidence is approved.

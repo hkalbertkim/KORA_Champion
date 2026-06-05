@@ -1,0 +1,83 @@
+{
+  "benchmark_type": "gpu_smoke",
+  "claim_level": "gpu_smoke_measured",
+  "cuda_available": true,
+  "ended_at_utc": "2026-06-05T01:26:07.781915+00:00",
+  "failed_units": 0,
+  "gpu_count": 2,
+  "gpu_memory_average_mb": 314.5,
+  "gpu_memory_max_mb": 629.0,
+  "gpu_model": [
+    "NVIDIA H100 80GB HBM3"
+  ],
+  "gpu_utilization_average": 0.5,
+  "gpu_utilization_max": 2.0,
+  "runtime_seconds": 0.368211,
+  "snapshot_after": {
+    "captured_at_utc": "2026-06-05T01:26:07.834311+00:00",
+    "collector": "nvidia-smi",
+    "cuda_available": true,
+    "gpu_count": 2,
+    "gpus": [
+      {
+        "index": 0,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 629.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 90.02,
+        "temperature_c": 29.0,
+        "utilization_gpu_percent": 0.0
+      },
+      {
+        "index": 1,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 629.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 76.6,
+        "temperature_c": 28.0,
+        "utilization_gpu_percent": 2.0
+      }
+    ],
+    "status": "ok",
+    "warnings": []
+  },
+  "snapshot_before": {
+    "captured_at_utc": "2026-06-05T01:26:06.157294+00:00",
+    "collector": "nvidia-smi",
+    "cuda_available": true,
+    "gpu_count": 2,
+    "gpus": [
+      {
+        "index": 0,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 0.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 73.02,
+        "temperature_c": 28.0,
+        "utilization_gpu_percent": 0.0
+      },
+      {
+        "index": 1,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 0.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 68.56,
+        "temperature_c": 27.0,
+        "utilization_gpu_percent": 0.0
+      }
+    ],
+    "status": "ok",
+    "warnings": []
+  },
+  "started_at_utc": "2026-06-05T01:26:06.118709+00:00",
+  "successful_units": 100,
+  "throughput_units_per_second": 271.583413,
+  "torch_available": true,
+  "warnings": [
+    "not_gpu_reduction_evidence",
+    "not_infrastructure_reduction_evidence"
+  ],
+  "workload_id": "gpu_smoke_100",
+  "workload_size": 100,
+  "workload_unit_type": "matrix_multiply_unit"
+}
