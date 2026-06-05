@@ -7,6 +7,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from kora_core.config import ProviderMode, load_provider_config
+from kora_core.providers import ProviderId
+from kora_core.run_record import RunType
 
 
 class ProviderConfigTests(unittest.TestCase):
@@ -14,6 +16,12 @@ class ProviderConfigTests(unittest.TestCase):
         config = load_provider_config({})
         self.assertEqual(config.mode, ProviderMode.DRY_RUN)
         self.assertEqual(str(config.provider), "local_mock")
+
+    def test_string_enum_values_match_runtime_labels(self) -> None:
+        self.assertEqual(str(ProviderMode.DRY_RUN), "dry_run")
+        self.assertEqual(str(ProviderId.OPENAI), "openai")
+        self.assertEqual(str(RunType.SYNTHETIC), "synthetic")
+        self.assertEqual(f"{ProviderMode.LIVE}", "live")
 
     def test_missing_env_vars_do_not_crash(self) -> None:
         config = load_provider_config({})

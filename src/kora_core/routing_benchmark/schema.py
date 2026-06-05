@@ -17,6 +17,13 @@ class RoutePath(StrEnum):
     FALLBACK = "fallback"
 
 
+def _validate_route_path(value: Any) -> None:
+    try:
+        RoutePath(str(value))
+    except ValueError as exc:
+        raise ValueError(f"unsupported oracle route: {value}") from exc
+
+
 REQUIRED_PROFILES = {
     "mixed_realistic_100k",
     "gpu_heavy_100k",
@@ -132,11 +139,12 @@ def validate_request(record: Mapping[str, Any]) -> None:
     if not isinstance(metadata, Mapping) or "observable" not in metadata or "inferred" not in metadata:
         raise ValueError("router_visible_metadata must include observable and inferred sections")
     labels = record["oracle_labels"]
-    if labels["expected_route"] not in RoutePath:
-        raise ValueError(f"unsupported expected route: {labels['expected_route']}")
+    try:
+        RoutePath(str(labels["expected_route"]))
+    except ValueError as exc:
+        raise ValueError(f"unsupported expected route: {labels['expected_route']}") from exc
     for route in labels["acceptable_routes"] + labels["disallowed_routes"]:
-        if route not in RoutePath:
-            raise ValueError(f"unsupported oracle route: {route}")
+        _validate_route_path(route)
     if record["compute_weight"]["formula_version"] != "cw_v0_1":
         raise ValueError("compute weight formula_version must be cw_v0_1")
 
