@@ -60,6 +60,15 @@ def _fallback_counts() -> dict[str, dict[str, int]]:
     return {category: dict(reasons) for category, reasons in FALLBACK_COUNTS_TEMPLATE.items()}
 
 
+def _route_distribution(route_counts: Counter[str], total: int, error_count: int) -> dict[str, dict[str, float | int]]:
+    distribution: dict[str, dict[str, float | int]] = {}
+    for route in RoutePath:
+        count = route_counts.get(route.value, 0)
+        distribution[route.value] = {"count": count, "percentage": round((count / total) * 100.0, 6)}
+    distribution["error"] = {"count": error_count, "percentage": round((error_count / total) * 100.0, 6)}
+    return distribution
+
+
 def score_decisions(
     requests: list[Mapping[str, Any]],
     decisions: list[Mapping[str, Any]],
@@ -132,8 +141,13 @@ def score_decisions(
     acceptable_rate = acceptable / total
     unsafe_rate = unsafe / total
     normalized_reduction = max(0.0, min(1.0, reduction))
+    gpu_routed_calls = route_counts.get(RoutePath.LOCAL_GPU.value, 0)
+    router_gpu_compute_weight = round(gpu_compute_weight, 6)
+    baseline_gpu_runtime_seconds_estimated = round(baseline_gpu_compute_weight / 100.0, 6)
+    router_gpu_runtime_seconds_estimated = round(gpu_compute_weight / 100.0, 6)
     return {
         "route_counts": dict(sorted(route_counts.items())),
+        "route_distribution": _route_distribution(route_counts, total, error_count),
         "exact_route_accuracy": exact / total,
         "acceptable_route_rate": acceptable_rate,
         "unsafe_misroute_rate": unsafe_rate,
@@ -145,19 +159,22 @@ def score_decisions(
         "safety_fallback_rate": safety_fallback_total / total,
         "failure_fallback_rate": failure_fallback_total / total,
         "error_rate": error_count / total,
+        "error_count": error_count,
+        "gpu_routed_calls": gpu_routed_calls,
+        "gpu_compute_weight": router_gpu_compute_weight,
         "avoided_gpu_calls": avoided_gpu_calls,
         "avoided_gpu_compute_units": round(avoided_gpu_compute_units, 6),
         "compute_weighted_gpu_reduction_percentage": round(reduction * 100.0, 6),
         "baseline_gpu_compute_weight": round(baseline_gpu_compute_weight, 6),
-        "kora_gpu_compute_weight": round(gpu_compute_weight, 6),
-        "baseline_gpu_runtime_seconds_estimated": round(baseline_gpu_compute_weight / 100.0, 6),
+        "router_gpu_compute_weight": router_gpu_compute_weight,
+        "kora_gpu_compute_weight": router_gpu_compute_weight,
+        "baseline_gpu_runtime_seconds_estimated": baseline_gpu_runtime_seconds_estimated,
+        "router_gpu_runtime_seconds_estimated": router_gpu_runtime_seconds_estimated,
         "kora_gpu_runtime_seconds_measured": None,
         "avoided_gpu_seconds_estimated": round(avoided_gpu_compute_units / 100.0, 6),
         "fallback_counts": fallback_counts,
-        "quality_validation": {
-            **empty_quality_validation(),
-            "quality_check_required_count": quality_required_count,
-        },
+        "quality_validation": empty_quality_validation(),
+        "quality_check_required_count_observed": quality_required_count,
         "provider_validation": empty_provider_validation(route_counts.get(RoutePath.PROVIDER.value, 0)),
         "provider_evidence_basis": provider_evidence_basis(),
         "selectivity_score_experimental": {

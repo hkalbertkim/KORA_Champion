@@ -14,10 +14,13 @@ class RoutingBenchmarkMetricsTests(unittest.TestCase):
         result = compare_routing_policies(requests)
         metrics = result["router_results"]["kora_router_adapter"]
         self.assertIn("exact_route_accuracy", metrics)
+        self.assertIn("route_distribution", metrics)
         self.assertIn("acceptable_route_rate", metrics)
         self.assertIn("gpu_false_positive_count", metrics)
+        self.assertIn("gpu_routed_calls", metrics)
         self.assertIn("fallback_counts", metrics)
         self.assertEqual(metrics["quality_validation"]["enabled"], False)
+        self.assertEqual(metrics["quality_validation"]["quality_check_required_count"], 0)
         self.assertEqual(metrics["provider_validation"]["mode"], "dry_run_only")
         self.assertEqual(metrics["provider_evidence_basis"]["used_for_cost_claim"], False)
 
@@ -28,6 +31,8 @@ class RoutingBenchmarkMetricsTests(unittest.TestCase):
         self.assertIn("avoided_gpu_compute_units", metrics)
         self.assertIn("compute_weighted_gpu_reduction_percentage", metrics)
         self.assertIn("baseline_gpu_runtime_seconds_estimated", metrics)
+        self.assertIn("router_gpu_runtime_seconds_estimated", metrics)
+        self.assertIn("router_gpu_compute_weight", metrics)
         self.assertIsNone(metrics["kora_gpu_runtime_seconds_measured"])
 
 

@@ -19,6 +19,9 @@ from kora_core.routing_benchmark.schema import REQUIRED_PROFILES, requests_from_
 from kora_core.routing_benchmark.workload_generator import generate_workload  # noqa: E402
 
 
+ROUTES = ("deterministic", "cache", "cpu", "provider", "local_gpu", "fallback", "error")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run a dry-run routing benchmark comparison.")
     parser.add_argument("--profile", default="service_replay_10k", choices=sorted(REQUIRED_PROFILES))
@@ -26,7 +29,39 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", default=404, type=int)
     parser.add_argument("--input", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--summary-output", type=Path)
     return parser.parse_args()
+
+
+def build_summary(result: dict) -> dict:
+    rows = []
+    for policy_name, metrics in result["router_results"].items():
+        distribution = metrics["route_distribution"]
+        row = {
+            "router": policy_name,
+            "exact_route_accuracy": metrics["exact_route_accuracy"],
+            "acceptable_route_rate": metrics["acceptable_route_rate"],
+            "unsafe_misroute_rate": metrics["unsafe_misroute_rate"],
+            "fallback_rate": metrics["fallback_rate"],
+            "compute_weighted_gpu_reduction_percentage": metrics[
+                "compute_weighted_gpu_reduction_percentage"
+            ],
+        }
+        for route in ROUTES:
+            route_metrics = distribution[route]
+            row[f"{route}_count"] = route_metrics["count"]
+            row[f"{route}_percentage"] = route_metrics["percentage"]
+        rows.append(row)
+    return {
+        "schema_version": "routing_benchmark_summary_v0_1",
+        "comparison_schema_version": result["schema_version"],
+        "profile": result["profile"],
+        "request_count": result["workload_request_count"],
+        "mode": result["mode"],
+        "h100_execution_performed": result["h100_execution_performed"],
+        "live_provider_execution_performed": result["live_provider_execution_performed"],
+        "rows": rows,
+    }
 
 
 def main() -> int:
@@ -46,8 +81,12 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = args.output or output_dir / f"{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}-{profile}-{len(requests)}.json"
     output_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    summary_payload = build_summary(result)
+    summary_path = args.summary_output or output_path.with_name(f"{output_path.stem}-summary.json")
+    summary_path.write_text(json.dumps(summary_payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     summary = {
         "comparison_path": str(output_path.relative_to(REPO_ROOT)),
+        "summary_path": str(summary_path.relative_to(REPO_ROOT)),
         "request_count": len(requests),
         "kora_route_counts": result["router_results"]["kora_router_adapter"]["route_counts"],
         "kora_acceptable_route_rate": result["router_results"]["kora_router_adapter"]["acceptable_route_rate"],

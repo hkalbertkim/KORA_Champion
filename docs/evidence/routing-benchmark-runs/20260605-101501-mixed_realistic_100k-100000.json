@@ -1,0 +1,465 @@
+{
+  "claim_boundaries": [
+    "framework_schema_dry_run_infrastructure_only",
+    "not_production_cost_saving_evidence",
+    "not_real_gpu_reduction_evidence",
+    "not_live_provider_reduction_evidence"
+  ],
+  "generated_at_utc": "2026-06-05T10:15:01Z",
+  "h100_execution_performed": false,
+  "kora_router_adapter_declaration": {
+    "adapter_type": "benchmark_prototype",
+    "benchmark_specific_logic": true,
+    "claim_level": "prototype_routing_evidence",
+    "oracle_labels_used": false
+  },
+  "live_provider_execution_performed": false,
+  "mode": "dry_run_only",
+  "oracle_independence": {
+    "oracle_generated_from_router_outputs": false,
+    "routers_read_oracle_labels": false
+  },
+  "profile": "mixed_realistic_100k",
+  "router_input_allowed_fields": [
+    "request_id",
+    "workload_profile",
+    "workload_class",
+    "router_visible_metadata.observable",
+    "router_visible_metadata.inferred"
+  ],
+  "router_results": {
+    "all_gpu": {
+      "acceptable_route_rate": 0.68181,
+      "avoided_gpu_calls": 0,
+      "avoided_gpu_compute_units": 0.0,
+      "avoided_gpu_seconds_estimated": 0.0,
+      "baseline_gpu_compute_weight": 6946527.767705,
+      "baseline_gpu_runtime_seconds_estimated": 69465.277677,
+      "cache_hit_correctness_rate": 1.0,
+      "compute_weighted_gpu_reduction_percentage": 0.0,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "exact_route_accuracy": 0.54545,
+      "failure_fallback_rate": 0.04545,
+      "fallback_counts": {
+        "failure_fallback": {
+          "execution_error": 0,
+          "invalid_request_schema": 4545,
+          "missing_metadata": 0,
+          "router_exception": 0
+        },
+        "safety_fallback": {
+          "cache_equivalence_uncertain": 0,
+          "cpu_gpu_boundary_uncertain": 0,
+          "provider_gpu_boundary_uncertain": 0,
+          "uncertain_route": 0
+        }
+      },
+      "fallback_rate": 0.04545,
+      "gpu_compute_weight": 6946527.767705,
+      "gpu_false_negative_count": 0,
+      "gpu_false_positive_count": 31819,
+      "gpu_routed_calls": 68181,
+      "kora_gpu_compute_weight": 6946527.767705,
+      "kora_gpu_runtime_seconds_measured": null,
+      "provider_evidence_basis": {
+        "claim_level": "measured_provider_partial",
+        "existing_live_provider_sample_count": 1,
+        "used_for_cost_claim": false
+      },
+      "provider_validation": {
+        "estimated_cost_per_1k": null,
+        "input_tokens_total": null,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "live_sample_count": 0,
+        "live_sample_enabled": false,
+        "mode": "dry_run_only",
+        "output_tokens_total": null,
+        "provider_routed_count": 0
+      },
+      "quality_check_required_count_observed": 45451,
+      "quality_validation": {
+        "enabled": false,
+        "quality_check_required_count": 0,
+        "quality_checked_count": 0,
+        "quality_fail_count": 0,
+        "quality_pass_count": 0,
+        "quality_validation_method": "not_yet_enabled"
+      },
+      "route_counts": {
+        "cache": 13637,
+        "deterministic": 13637,
+        "fallback": 4545,
+        "local_gpu": 68181
+      },
+      "route_distribution": {
+        "cache": {
+          "count": 13637,
+          "percentage": 13.637
+        },
+        "cpu": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "deterministic": {
+          "count": 13637,
+          "percentage": 13.637
+        },
+        "error": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "fallback": {
+          "count": 4545,
+          "percentage": 4.545
+        },
+        "local_gpu": {
+          "count": 68181,
+          "percentage": 68.181
+        },
+        "provider": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "router_gpu_compute_weight": 6946527.767705,
+      "router_gpu_runtime_seconds_estimated": 69465.277677,
+      "safety_fallback_rate": 0.0,
+      "selectivity_score_experimental": {
+        "label": "experimental/dashboard-only",
+        "official_claim_basis": false,
+        "value": 0.0
+      },
+      "unsafe_cpu_route_count": 0,
+      "unsafe_misroute_rate": 0.31819
+    },
+    "kora_router_adapter": {
+      "acceptable_route_rate": 1.0,
+      "avoided_gpu_calls": 46978,
+      "avoided_gpu_compute_units": 2187929.366403,
+      "avoided_gpu_seconds_estimated": 21879.293664,
+      "baseline_gpu_compute_weight": 6946527.767705,
+      "baseline_gpu_runtime_seconds_estimated": 69465.277677,
+      "cache_hit_correctness_rate": 1.0,
+      "compute_weighted_gpu_reduction_percentage": 31.496734,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "exact_route_accuracy": 0.98477,
+      "failure_fallback_rate": 0.04545,
+      "fallback_counts": {
+        "failure_fallback": {
+          "execution_error": 0,
+          "invalid_request_schema": 0,
+          "missing_metadata": 4545,
+          "router_exception": 0
+        },
+        "safety_fallback": {
+          "cache_equivalence_uncertain": 0,
+          "cpu_gpu_boundary_uncertain": 0,
+          "provider_gpu_boundary_uncertain": 4545,
+          "uncertain_route": 0
+        }
+      },
+      "fallback_rate": 0.0909,
+      "gpu_compute_weight": 4758598.401301,
+      "gpu_false_negative_count": 1523,
+      "gpu_false_positive_count": 0,
+      "gpu_routed_calls": 21203,
+      "kora_gpu_compute_weight": 4758598.401301,
+      "kora_gpu_runtime_seconds_measured": null,
+      "provider_evidence_basis": {
+        "claim_level": "measured_provider_partial",
+        "existing_live_provider_sample_count": 1,
+        "used_for_cost_claim": false
+      },
+      "provider_validation": {
+        "estimated_cost_per_1k": null,
+        "input_tokens_total": null,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "live_sample_count": 0,
+        "live_sample_enabled": false,
+        "mode": "dry_run_only",
+        "output_tokens_total": null,
+        "provider_routed_count": 13635
+      },
+      "quality_check_required_count_observed": 45451,
+      "quality_validation": {
+        "enabled": false,
+        "quality_check_required_count": 0,
+        "quality_checked_count": 0,
+        "quality_fail_count": 0,
+        "quality_pass_count": 0,
+        "quality_validation_method": "not_yet_enabled"
+      },
+      "route_counts": {
+        "cache": 13637,
+        "cpu": 28798,
+        "deterministic": 13637,
+        "fallback": 9090,
+        "local_gpu": 21203,
+        "provider": 13635
+      },
+      "route_distribution": {
+        "cache": {
+          "count": 13637,
+          "percentage": 13.637
+        },
+        "cpu": {
+          "count": 28798,
+          "percentage": 28.798
+        },
+        "deterministic": {
+          "count": 13637,
+          "percentage": 13.637
+        },
+        "error": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "fallback": {
+          "count": 9090,
+          "percentage": 9.09
+        },
+        "local_gpu": {
+          "count": 21203,
+          "percentage": 21.203
+        },
+        "provider": {
+          "count": 13635,
+          "percentage": 13.635
+        }
+      },
+      "router_gpu_compute_weight": 4758598.401301,
+      "router_gpu_runtime_seconds_estimated": 47585.984013,
+      "safety_fallback_rate": 0.04545,
+      "selectivity_score_experimental": {
+        "label": "experimental/dashboard-only",
+        "official_claim_basis": false,
+        "value": 0.314967
+      },
+      "unsafe_cpu_route_count": 0,
+      "unsafe_misroute_rate": 0.0
+    },
+    "provider_first_with_gpu_fallback": {
+      "acceptable_route_rate": 0.81818,
+      "avoided_gpu_calls": 59091,
+      "avoided_gpu_compute_units": 3871680.837281,
+      "avoided_gpu_seconds_estimated": 38716.808373,
+      "baseline_gpu_compute_weight": 6946527.767705,
+      "baseline_gpu_runtime_seconds_estimated": 69465.277677,
+      "cache_hit_correctness_rate": 0.6666422233629097,
+      "compute_weighted_gpu_reduction_percentage": 55.735483,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "exact_route_accuracy": 0.68181,
+      "failure_fallback_rate": 0.04545,
+      "fallback_counts": {
+        "failure_fallback": {
+          "execution_error": 0,
+          "invalid_request_schema": 0,
+          "missing_metadata": 4545,
+          "router_exception": 0
+        },
+        "safety_fallback": {
+          "cache_equivalence_uncertain": 0,
+          "cpu_gpu_boundary_uncertain": 0,
+          "provider_gpu_boundary_uncertain": 0,
+          "uncertain_route": 0
+        }
+      },
+      "fallback_rate": 0.04545,
+      "gpu_compute_weight": 3074846.930422,
+      "gpu_false_negative_count": 13636,
+      "gpu_false_positive_count": 0,
+      "gpu_routed_calls": 9090,
+      "kora_gpu_compute_weight": 3074846.930422,
+      "kora_gpu_runtime_seconds_measured": null,
+      "provider_evidence_basis": {
+        "claim_level": "measured_provider_partial",
+        "existing_live_provider_sample_count": 1,
+        "used_for_cost_claim": false
+      },
+      "provider_validation": {
+        "estimated_cost_per_1k": null,
+        "input_tokens_total": null,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "live_sample_count": 0,
+        "live_sample_enabled": false,
+        "mode": "dry_run_only",
+        "output_tokens_total": null,
+        "provider_routed_count": 40908
+      },
+      "quality_check_required_count_observed": 45451,
+      "quality_validation": {
+        "enabled": false,
+        "quality_check_required_count": 0,
+        "quality_checked_count": 0,
+        "quality_fail_count": 0,
+        "quality_pass_count": 0,
+        "quality_validation_method": "not_yet_enabled"
+      },
+      "route_counts": {
+        "cache": 9091,
+        "cpu": 22729,
+        "deterministic": 13637,
+        "fallback": 4545,
+        "local_gpu": 9090,
+        "provider": 40908
+      },
+      "route_distribution": {
+        "cache": {
+          "count": 9091,
+          "percentage": 9.091
+        },
+        "cpu": {
+          "count": 22729,
+          "percentage": 22.729
+        },
+        "deterministic": {
+          "count": 13637,
+          "percentage": 13.637
+        },
+        "error": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "fallback": {
+          "count": 4545,
+          "percentage": 4.545
+        },
+        "local_gpu": {
+          "count": 9090,
+          "percentage": 9.09
+        },
+        "provider": {
+          "count": 40908,
+          "percentage": 40.908
+        }
+      },
+      "router_gpu_compute_weight": 3074846.930422,
+      "router_gpu_runtime_seconds_estimated": 30748.469304,
+      "safety_fallback_rate": 0.0,
+      "selectivity_score_experimental": {
+        "label": "experimental/dashboard-only",
+        "official_claim_basis": false,
+        "value": 0.435286
+      },
+      "unsafe_cpu_route_count": 4546,
+      "unsafe_misroute_rate": 0.04546
+    },
+    "static_heuristic_router": {
+      "acceptable_route_rate": 0.95454,
+      "avoided_gpu_calls": 46978,
+      "avoided_gpu_compute_units": 2187929.366403,
+      "avoided_gpu_seconds_estimated": 21879.293664,
+      "baseline_gpu_compute_weight": 6946527.767705,
+      "baseline_gpu_runtime_seconds_estimated": 69465.277677,
+      "cache_hit_correctness_rate": 0.6666422233629097,
+      "compute_weighted_gpu_reduction_percentage": 31.496734,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "exact_route_accuracy": 0.93931,
+      "failure_fallback_rate": 0.04545,
+      "fallback_counts": {
+        "failure_fallback": {
+          "execution_error": 0,
+          "invalid_request_schema": 0,
+          "missing_metadata": 4545,
+          "router_exception": 0
+        },
+        "safety_fallback": {
+          "cache_equivalence_uncertain": 0,
+          "cpu_gpu_boundary_uncertain": 0,
+          "provider_gpu_boundary_uncertain": 4545,
+          "uncertain_route": 0
+        }
+      },
+      "fallback_rate": 0.0909,
+      "gpu_compute_weight": 4758598.401301,
+      "gpu_false_negative_count": 1523,
+      "gpu_false_positive_count": 0,
+      "gpu_routed_calls": 21203,
+      "kora_gpu_compute_weight": 4758598.401301,
+      "kora_gpu_runtime_seconds_measured": null,
+      "provider_evidence_basis": {
+        "claim_level": "measured_provider_partial",
+        "existing_live_provider_sample_count": 1,
+        "used_for_cost_claim": false
+      },
+      "provider_validation": {
+        "estimated_cost_per_1k": null,
+        "input_tokens_total": null,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "live_sample_count": 0,
+        "live_sample_enabled": false,
+        "mode": "dry_run_only",
+        "output_tokens_total": null,
+        "provider_routed_count": 13635
+      },
+      "quality_check_required_count_observed": 45451,
+      "quality_validation": {
+        "enabled": false,
+        "quality_check_required_count": 0,
+        "quality_checked_count": 0,
+        "quality_fail_count": 0,
+        "quality_pass_count": 0,
+        "quality_validation_method": "not_yet_enabled"
+      },
+      "route_counts": {
+        "cache": 9091,
+        "cpu": 33344,
+        "deterministic": 13637,
+        "fallback": 9090,
+        "local_gpu": 21203,
+        "provider": 13635
+      },
+      "route_distribution": {
+        "cache": {
+          "count": 9091,
+          "percentage": 9.091
+        },
+        "cpu": {
+          "count": 33344,
+          "percentage": 33.344
+        },
+        "deterministic": {
+          "count": 13637,
+          "percentage": 13.637
+        },
+        "error": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "fallback": {
+          "count": 9090,
+          "percentage": 9.09
+        },
+        "local_gpu": {
+          "count": 21203,
+          "percentage": 21.203
+        },
+        "provider": {
+          "count": 13635,
+          "percentage": 13.635
+        }
+      },
+      "router_gpu_compute_weight": 4758598.401301,
+      "router_gpu_runtime_seconds_estimated": 47585.984013,
+      "safety_fallback_rate": 0.04545,
+      "selectivity_score_experimental": {
+        "label": "experimental/dashboard-only",
+        "official_claim_basis": false,
+        "value": 0.286981
+      },
+      "unsafe_cpu_route_count": 4546,
+      "unsafe_misroute_rate": 0.04546
+    }
+  },
+  "schema_version": "routing_benchmark_comparison_v0_1",
+  "seed": 404,
+  "workload_request_count": 100000
+}

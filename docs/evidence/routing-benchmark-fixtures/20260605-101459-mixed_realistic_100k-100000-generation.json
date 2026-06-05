@@ -1,0 +1,15 @@
+{
+  "schema_version": "routing_benchmark_fixture_generation_v0_1",
+  "profile": "mixed_realistic_100k",
+  "request_count": 100000,
+  "seed": 404,
+  "fixture_path_not_committed": "docs/evidence/routing-benchmark-fixtures/20260605-101459-mixed_realistic_100k-100000.json",
+  "fixture_sha256": "e0cd00a416d649a49b4770985256eca05f763c2d072fda3afa754cf8e61dcd04",
+  "fixture_size_bytes": 130313730,
+  "commit_strategy": "generation_config_and_hash",
+  "reason_full_fixture_not_committed": "The deterministic fixture JSON exceeds the normal single-file size limit for a clean public repository.",
+  "comparison_run_path": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json",
+  "summary_path": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000-summary.json",
+  "h100_execution_performed": false,
+  "live_provider_execution_performed": false
+}
