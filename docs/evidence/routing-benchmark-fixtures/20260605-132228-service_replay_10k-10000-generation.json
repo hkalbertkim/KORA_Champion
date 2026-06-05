@@ -1,0 +1,13 @@
+{
+  "commit_strategy": "generation_config_and_hash",
+  "fixture_path_not_committed": "docs/evidence/routing-benchmark-fixtures/20260605-132228-service_replay_10k-10000.json",
+  "fixture_sha256": "d447794f24b7412c59969dfa239a0f37472215ff8469c0de9e5bbf47476a755d",
+  "fixture_size_bytes": 13017040,
+  "h100_execution_performed": false,
+  "live_provider_execution_performed": false,
+  "profile": "service_replay_10k",
+  "reason_full_fixture_not_committed": "The deterministic fixture JSON is large; the comparison output and deterministic hash are committed instead.",
+  "request_count": 10000,
+  "schema_version": "routing_benchmark_fixture_generation_v0_1",
+  "seed": 404
+}
