@@ -7,7 +7,7 @@ import csv
 import json
 import shutil
 import subprocess
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from io import StringIO
 
 
@@ -30,7 +30,7 @@ def main() -> int:
                 {
                     "status": "unavailable",
                     "collector": "nvidia-smi",
-                    "captured_at_utc": datetime.now(UTC).isoformat(),
+                    "captured_at_utc": datetime.now(timezone.utc).isoformat(),
                     "cuda_available": False,
                     "gpus": [],
                     "warnings": ["nvidia_smi_not_available"],
@@ -53,7 +53,7 @@ def main() -> int:
                 {
                     "status": "error",
                     "collector": "nvidia-smi",
-                    "captured_at_utc": datetime.now(UTC).isoformat(),
+                    "captured_at_utc": datetime.now(timezone.utc).isoformat(),
                     "cuda_available": False,
                     "gpus": [],
                     "warnings": ["nvidia_smi_query_failed"],
@@ -70,7 +70,7 @@ def main() -> int:
             {
                 "status": "ok",
                 "collector": "nvidia-smi",
-                "captured_at_utc": datetime.now(UTC).isoformat(),
+                "captured_at_utc": datetime.now(timezone.utc).isoformat(),
                 "cuda_available": bool(gpus),
                 "gpu_count": len(gpus),
                 "gpus": gpus,

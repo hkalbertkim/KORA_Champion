@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import Any, Mapping
 
 from kora_core.routing_benchmark.kora_router_adapter import KORA_ROUTER_ADAPTER_DECLARATION, kora_router_adapter
@@ -37,7 +37,7 @@ def compare_routing_policies(requests: list[Mapping[str, Any]]) -> dict[str, Any
     }
     return {
         "schema_version": "routing_benchmark_comparison_v0_1",
-        "generated_at_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "mode": "dry_run_only",
         "h100_execution_performed": False,
         "live_provider_execution_performed": False,

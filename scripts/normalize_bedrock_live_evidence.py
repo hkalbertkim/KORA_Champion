@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -28,7 +28,7 @@ def main() -> int:
     comparison = build_partial_live_provider_comparison(measurement, requests)
     output_dir = REPO_ROOT / "docs" / "evidence" / "live-comparisons"
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = output_dir / f"{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}-bedrock-live-normalized-comparison.json"
+    output_path = output_dir / f"{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}-bedrock-live-normalized-comparison.json"
     output_path.write_text(json.dumps(comparison.to_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8")
     summary = {
         "comparison_path": str(output_path.relative_to(REPO_ROOT)),

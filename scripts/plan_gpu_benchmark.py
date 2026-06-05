@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -20,7 +20,7 @@ def main() -> int:
     plan = build_default_gpu_benchmark_plan()
     output_dir = REPO_ROOT / "docs" / "evidence" / "gpu-plans"
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = output_dir / f"{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}-gpu-benchmark-plan.json"
+    output_path = output_dir / f"{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}-gpu-benchmark-plan.json"
     output_path.write_text(json.dumps(plan.to_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8")
     summary = {
         "plan_path": str(output_path.relative_to(REPO_ROOT)),

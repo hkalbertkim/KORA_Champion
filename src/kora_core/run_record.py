@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean
 from typing import Any, Mapping
@@ -184,10 +184,10 @@ def create_run_record_from_harness(
     is_synthetic = run_type == RunType.SYNTHETIC
 
     return RunRecord(
-        run_id=f"{datetime.now(UTC).strftime('%Y%m%d%H%M%S')}-{uuid4().hex[:8]}",
+        run_id=f"{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}-{uuid4().hex[:8]}",
         run_name=run_name,
         run_type=run_type,
-        timestamp_utc=datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        timestamp_utc=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         git_commit=git_commit,
         environment_label=environment_label,
         notes=list(notes or []),

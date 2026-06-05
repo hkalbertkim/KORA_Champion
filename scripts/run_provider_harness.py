@@ -7,7 +7,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -58,7 +58,7 @@ def main() -> int:
         else REPO_ROOT / "docs" / "evidence" / "provider-harness"
     )
     output_dir.mkdir(parents=True, exist_ok=True)
-    timestamp = datetime.now(UTC).strftime("%Y%m%d-%H%M%S")
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
     if args.mode == "live":
         filename = f"{timestamp}-provider-live-{provider}.json"
     else:

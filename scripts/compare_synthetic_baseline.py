@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -29,7 +29,7 @@ def main() -> int:
     )
     output_dir = REPO_ROOT / "docs" / "evidence" / "comparisons"
     output_dir.mkdir(parents=True, exist_ok=True)
-    filename = f"{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}-baseline-vs-kora-synthetic.json"
+    filename = f"{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}-baseline-vs-kora-synthetic.json"
     output_path = output_dir / filename
     output_path.write_text(json.dumps(comparison.to_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8")
     summary = {

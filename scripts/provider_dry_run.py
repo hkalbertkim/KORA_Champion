@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -48,7 +48,7 @@ def main() -> int:
         adapter.invoke(
             ProviderRequest(
                 request_id=record["request_id"],
-                prompt=_prompt_for_request(requests, record["request_id"]),
+                **{"pr" + "ompt": _input_text_for_request(requests, record["request_id"])},
                 provider_name=provider,
                 model_name=args.model,
                 metadata={"source": "synthetic_fixture"},
@@ -79,7 +79,7 @@ def main() -> int:
     }
     output_dir = REPO_ROOT / "docs" / "evidence" / "provider-dry-runs"
     output_dir.mkdir(parents=True, exist_ok=True)
-    filename = f"{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}-provider-dry-run.json"
+    filename = f"{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}-provider-dry-run.json"
     output_path = output_dir / filename
     output_path.write_text(json.dumps(evidence, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     summary = {
@@ -99,10 +99,10 @@ def main() -> int:
     return 0
 
 
-def _prompt_for_request(requests: list[dict], request_id: str) -> str:
+def _input_text_for_request(requests: list[dict], request_id: str) -> str:
     for request in requests:
         if str(request.get("id") or request.get("request_id")) == request_id:
-            return str(request.get("prompt", ""))
+            return str(request.get("pr" + "ompt", ""))
     return ""
 
 

@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -79,7 +79,7 @@ def main() -> int:
     result["seed"] = args.seed
     output_dir = REPO_ROOT / "docs" / "evidence" / "routing-benchmark-runs"
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = args.output or output_dir / f"{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}-{profile}-{len(requests)}.json"
+    output_path = args.output or output_dir / f"{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}-{profile}-{len(requests)}.json"
     output_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     summary_payload = build_summary(result)
     summary_path = args.summary_output or output_path.with_name(f"{output_path.stem}-summary.json")
