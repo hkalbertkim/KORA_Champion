@@ -10,7 +10,7 @@ import json
 import shutil
 import subprocess
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from io import StringIO
 from pathlib import Path
 from typing import Any
@@ -68,7 +68,7 @@ def run_gpu_smoke_workload(*, workload_size: int = DEFAULT_WORKLOAD_SIZE, matrix
     if matrix_size <= 0 or matrix_size > 1024:
         raise ValueError("matrix_size must be between 1 and 1024")
 
-    started_at = datetime.now(UTC)
+    started_at = datetime.now(timezone.utc)
     snapshot_before = collect_gpu_snapshot()
     torch_module = _load_torch()
     warnings: list[str] = []
@@ -99,7 +99,7 @@ def run_gpu_smoke_workload(*, workload_size: int = DEFAULT_WORKLOAD_SIZE, matrix
             runtime_seconds = workload["runtime_seconds"]
             warnings.extend(workload["warnings"])
 
-    ended_at = datetime.now(UTC)
+    ended_at = datetime.now(timezone.utc)
     snapshot_after = collect_gpu_snapshot()
     if not snapshot_before.get("gpus") and not snapshot_after.get("gpus"):
         warnings.append("nvidia_smi_snapshot_unavailable")
@@ -144,7 +144,7 @@ def collect_gpu_snapshot() -> dict[str, Any]:
         return {
             "status": "unavailable",
             "collector": "nvidia-smi",
-            "captured_at_utc": datetime.now(UTC).isoformat(),
+            "captured_at_utc": datetime.now(timezone.utc).isoformat(),
             "cuda_available": False,
             "gpu_count": 0,
             "gpus": [],
@@ -161,7 +161,7 @@ def collect_gpu_snapshot() -> dict[str, Any]:
         return {
             "status": "error",
             "collector": "nvidia-smi",
-            "captured_at_utc": datetime.now(UTC).isoformat(),
+            "captured_at_utc": datetime.now(timezone.utc).isoformat(),
             "cuda_available": False,
             "gpu_count": 0,
             "gpus": [],
@@ -171,7 +171,7 @@ def collect_gpu_snapshot() -> dict[str, Any]:
     return {
         "status": "ok",
         "collector": "nvidia-smi",
-        "captured_at_utc": datetime.now(UTC).isoformat(),
+        "captured_at_utc": datetime.now(timezone.utc).isoformat(),
         "cuda_available": bool(gpus),
         "gpu_count": len(gpus),
         "gpus": gpus,
@@ -289,7 +289,7 @@ def _to_int(value: str) -> int | None:
 
 
 def _timestamp() -> str:
-    return datetime.now(UTC).strftime("%Y%m%d-%H%M%S")
+    return datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
 
 
 def _parse_args() -> argparse.Namespace:
