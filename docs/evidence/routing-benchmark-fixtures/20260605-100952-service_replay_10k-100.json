@@ -1,0 +1,4602 @@
+{
+  "profile": "service_replay_10k",
+  "request_count": 100,
+  "requests": [
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.05,
+          "complexity_multiplier": 0.5,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.275018
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000001",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_exact",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 1.0,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.960028
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000002",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_near_duplicate",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 0.5,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.400056
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000003",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.2,
+          "complexity_multiplier": 1.0,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.40007
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000004",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_not_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.301118
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000005",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_config_lookup",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.350561
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000006",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_model_catalog_query",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.5,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 1.752807
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000007",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "small_text_transform_cpu",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.6,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.401687
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000008",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "local_file_metadata_parse",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 8.005625
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000009",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "embedding_index_query_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 5.0,
+          "complexity_multiplier": 1.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 70.00044
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000010",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 8,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "embedding"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "embedding_index_query_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 3.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 13.504223
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000011",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "rerank_batch_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 6.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 270.000792
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000012",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 16,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "rerank_batch_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 90.000264
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000013",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_long_form_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.5,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 112.50033
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000014",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_code_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 7.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 8192
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 275.42765
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000015",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 8192,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_batch_embedding",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.204474,
+          "class_base_weight": 8.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 404.705662
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000016",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 64,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_tensor_transform",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 4.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 8192
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 156.002113
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback",
+          "provider",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Ambiguous provider/GPU boundary should be handled conservatively."
+      },
+      "request_id": "req_000017",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 8192,
+          "request_modality": "mixed"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "ambiguous_provider_or_gpu_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 1.0,
+          "input_size": 0
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.0
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache",
+          "cpu",
+          "provider",
+          "local_gpu"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Missing or invalid metadata requires a failure fallback."
+      },
+      "request_id": "req_000018",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "unknown",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 0,
+          "cache_key_available": false,
+          "input_size": 0,
+          "request_modality": "unknown"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "invalid_or_missing_metadata_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.05,
+          "complexity_multiplier": 0.5,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.275018
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000019",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_exact",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 1.0,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.960028
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000020",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_near_duplicate",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 0.5,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.480014
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000021",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.2,
+          "complexity_multiplier": 1.0,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.200141
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000022",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_not_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.450141
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000023",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_config_lookup",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.350561
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000024",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_model_catalog_query",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.5,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 1.505592
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000025",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "small_text_transform_cpu",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.6,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.401687
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000026",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "local_file_metadata_parse",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 7.011227
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000027",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "embedding_index_query_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 5.0,
+          "complexity_multiplier": 1.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 70.621962
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000028",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "embedding"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "embedding_index_query_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 3.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 13.504223
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000029",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "rerank_batch_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 6.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 252.001585
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000030",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 16,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "rerank_batch_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 84.000528
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000031",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_long_form_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.5,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 112.50033
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000032",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_code_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 7.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 317.797762
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000033",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_batch_embedding",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 8.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 338.985417
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000034",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_tensor_transform",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 4.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 168.001057
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback",
+          "provider",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Ambiguous provider/GPU boundary should be handled conservatively."
+      },
+      "request_id": "req_000035",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "mixed"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "ambiguous_provider_or_gpu_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 1.0,
+          "input_size": 0
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.0
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache",
+          "cpu",
+          "provider",
+          "local_gpu"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Missing or invalid metadata requires a failure fallback."
+      },
+      "request_id": "req_000036",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "unknown",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 0,
+          "cache_key_available": false,
+          "input_size": 0,
+          "request_modality": "unknown"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "invalid_or_missing_metadata_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.05,
+          "complexity_multiplier": 0.5,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.250035
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000037",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_exact",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 1.0,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.800113
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000038",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_near_duplicate",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 0.5,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.400056
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000039",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.2,
+          "complexity_multiplier": 1.0,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.000282
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000040",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_not_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.301118
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000041",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_config_lookup",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.301118
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000042",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_model_catalog_query",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.5,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.250704
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000043",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "small_text_transform_cpu",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.6,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 1.80671
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000044",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "local_file_metadata_parse",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 6.022368
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000045",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "embedding_index_query_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 5.0,
+          "complexity_multiplier": 1.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 75.00022
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000046",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 16,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "embedding"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "embedding_index_query_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 3.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 12.008437
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000047",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "rerank_batch_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 6.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 272.398082
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000048",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "rerank_batch_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 90.000264
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000049",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_long_form_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.5,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 105.00066
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000050",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_code_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 7.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 296.61224
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000051",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_batch_embedding",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.204474,
+          "class_base_weight": 8.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 404.705662
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000052",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 64,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_tensor_transform",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 4.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 168.001057
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback",
+          "provider",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Ambiguous provider/GPU boundary should be handled conservatively."
+      },
+      "request_id": "req_000053",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "mixed"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "ambiguous_provider_or_gpu_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 1.0,
+          "input_size": 0
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.0
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache",
+          "cpu",
+          "provider",
+          "local_gpu"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Missing or invalid metadata requires a failure fallback."
+      },
+      "request_id": "req_000054",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "unknown",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 0,
+          "cache_key_available": false,
+          "input_size": 0,
+          "request_modality": "unknown"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "invalid_or_missing_metadata_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.05,
+          "complexity_multiplier": 0.5,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.250035
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000055",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_exact",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 1.0,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.960028
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000056",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_near_duplicate",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 0.5,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.400056
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000057",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.2,
+          "complexity_multiplier": 1.0,
+          "input_size": 1024
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.000282
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000058",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 1024,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_not_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.350561
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000059",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_config_lookup",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.350561
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000060",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_model_catalog_query",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.5,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.250704
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000061",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "small_text_transform_cpu",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.6,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.103368
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000062",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "local_file_metadata_parse",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 7.011227
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000063",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "embedding_index_query_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 5.0,
+          "complexity_multiplier": 1.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 70.00044
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000064",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 8,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "embedding"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "embedding_index_query_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 3.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 12.008437
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000065",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "rerank_batch_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 6.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 254.239063
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000066",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "rerank_batch_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 90.000264
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000067",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_long_form_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.5,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 105.00066
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000068",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_code_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.204474,
+          "class_base_weight": 7.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 8192
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 328.825737
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000069",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 64,
+          "cache_key_available": false,
+          "input_size": 8192,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_batch_embedding",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 8.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 338.985417
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000070",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_tensor_transform",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 4.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 8192
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 156.002113
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback",
+          "provider",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Ambiguous provider/GPU boundary should be handled conservatively."
+      },
+      "request_id": "req_000071",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 8,
+          "cache_key_available": false,
+          "input_size": 8192,
+          "request_modality": "mixed"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "ambiguous_provider_or_gpu_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 1.0,
+          "input_size": 0
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.0
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache",
+          "cpu",
+          "provider",
+          "local_gpu"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Missing or invalid metadata requires a failure fallback."
+      },
+      "request_id": "req_000072",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "unknown",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 0,
+          "cache_key_available": false,
+          "input_size": 0,
+          "request_modality": "unknown"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "invalid_or_missing_metadata_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.05,
+          "complexity_multiplier": 0.5,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.300009
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000073",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_exact",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 1.0,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.880056
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000074",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_near_duplicate",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 0.5,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.480014
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000075",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.2,
+          "complexity_multiplier": 1.0,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.200141
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000076",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_not_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.301118
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000077",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_config_lookup",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.350561
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000078",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_model_catalog_query",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.5,
+          "complexity_multiplier": 0.5,
+          "input_size": 64
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 1.505592
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000079",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 64,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "small_text_transform_cpu",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.6,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.401687
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000080",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "local_file_metadata_parse",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 9.002815
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000081",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "embedding_index_query_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 5.0,
+          "complexity_multiplier": 1.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 75.00022
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000082",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 16,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "embedding"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "embedding_index_query_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 3.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 13.504223
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000083",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "rerank_batch_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 6.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 270.000792
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000084",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 16,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "rerank_batch_large",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 84.000528
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000085",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_long_form_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.5,
+          "complexity_multiplier": 3.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 105.00066
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cpu",
+          "cache"
+        ],
+        "expected_route": "provider",
+        "oracle_reason": "Model-dependent language generation is provider-preferred in this dry-run benchmark."
+      },
+      "request_id": "req_000086",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "language"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "provider_code_generation",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 7.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 8192
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 273.003698
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000087",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 16,
+          "cache_key_available": false,
+          "input_size": 8192,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_batch_embedding",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.008879,
+          "class_base_weight": 8.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 363.197443
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000088",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 32,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "tensor"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "gpu_tensor_transform",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 4.0,
+          "complexity_multiplier": 3.0,
+          "input_size": 32768
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 180.000528
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback",
+          "provider",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Ambiguous provider/GPU boundary should be handled conservatively."
+      },
+      "request_id": "req_000089",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "high",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 32768,
+          "request_modality": "mixed"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "ambiguous_provider_or_gpu_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 1.0,
+          "input_size": 0
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.0
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "fallback"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache",
+          "cpu",
+          "provider",
+          "local_gpu"
+        ],
+        "expected_route": "fallback",
+        "oracle_reason": "Missing or invalid metadata requires a failure fallback."
+      },
+      "request_id": "req_000090",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "unknown",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 0,
+          "cache_key_available": false,
+          "input_size": 0,
+          "request_modality": "unknown"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "invalid_or_missing_metadata_request",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.05,
+          "complexity_multiplier": 0.5,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.275018
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000091",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_exact",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 1.0,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.880056
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000092",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "repeated_user_prompt_near_duplicate",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.08,
+          "complexity_multiplier": 0.5,
+          "input_size": 4096
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.480014
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cache"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider",
+          "cpu"
+        ],
+        "expected_route": "cache",
+        "oracle_reason": "Exact reusable result should route to cache."
+      },
+      "request_id": "req_000093",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": true,
+          "input_size": 4096,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": true,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.2,
+          "complexity_multiplier": 1.0,
+          "input_size": 2048
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.200141
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000094",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 2048,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "near_duplicate_not_equivalent",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.450141
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000095",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_config_lookup",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.1,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 0.350561
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "deterministic",
+          "cpu"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "provider"
+        ],
+        "expected_route": "deterministic",
+        "oracle_reason": "Deterministic lookup should not use model execution."
+      },
+      "request_id": "req_000096",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "config"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "deterministic_model_catalog_query",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.5,
+          "complexity_multiplier": 0.5,
+          "input_size": 128
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 1.752807
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000097",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "high"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 128,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "small_text_transform_cpu",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 0.6,
+          "complexity_multiplier": 0.5,
+          "input_size": 512
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 2.700845
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "provider"
+        ],
+        "disallowed_routes": [
+          "local_gpu",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small non-model or uncertain reuse work should avoid GPU execution."
+      },
+      "request_id": "req_000098",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 512,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "local_file_metadata_parse",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 2.0,
+          "complexity_multiplier": 0.5,
+          "input_size": 256
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 8.005625
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "cpu",
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "cpu",
+        "oracle_reason": "Small vector work is CPU-preferred but GPU-acceptable."
+      },
+      "request_id": "req_000099",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "low",
+          "latency_sensitivity": "low"
+        },
+        "observable": {
+          "batch_size": 1,
+          "cache_key_available": false,
+          "input_size": 256,
+          "request_modality": "text"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": false
+      },
+      "workload_class": "embedding_index_query_small",
+      "workload_profile": "service_replay_10k"
+    },
+    {
+      "compute_weight": {
+        "basis": {
+          "batch_multiplier": 1.0,
+          "class_base_weight": 5.0,
+          "complexity_multiplier": 1.0,
+          "input_size": 16384
+        },
+        "formula_version": "cw_v0_1",
+        "measured_weight_available": false,
+        "method": "size_derived_weight",
+        "value": 70.00044
+      },
+      "oracle_labels": {
+        "acceptable_routes": [
+          "local_gpu"
+        ],
+        "disallowed_routes": [
+          "deterministic",
+          "cache"
+        ],
+        "expected_route": "local_gpu",
+        "oracle_reason": "Batch or tensor-heavy work is GPU-preferred for execution-path selectivity."
+      },
+      "request_id": "req_000100",
+      "router_visible_metadata": {
+        "inferred": {
+          "estimated_complexity": "medium",
+          "latency_sensitivity": "medium"
+        },
+        "observable": {
+          "batch_size": 8,
+          "cache_key_available": false,
+          "input_size": 16384,
+          "request_modality": "embedding"
+        }
+      },
+      "validation": {
+        "adversarial_tag": null,
+        "cache_hit_expected": false,
+        "quality_check_required": true
+      },
+      "workload_class": "embedding_index_query_large",
+      "workload_profile": "service_replay_10k"
+    }
+  ],
+  "schema_version": "routing_benchmark_workload_v0_1",
+  "seed": 404
+}
