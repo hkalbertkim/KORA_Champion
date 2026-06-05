@@ -68,6 +68,22 @@ First H100 smoke measurement:
 
 This is bounded smoke evidence only. It is not GPU reduction, infrastructure reduction, or production savings evidence.
 
+First H100 micro benchmark:
+
+- evidence: `docs/evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json`
+- workload size: 10,000
+- GPU count observed: 2
+- GPU model observed: NVIDIA H100 80GB HBM3
+- runtime seconds: 0.836763
+- throughput units per second: 11950.815225
+- claim level: `gpu_micro_benchmark_measured`
+
+Micro benchmark evidence shows that the bounded GPU measurement harness can scale beyond smoke size. It is not yet GPU reduction, infrastructure reduction, or production savings evidence.
+
+Current GPU micro report:
+
+- [GPU Micro Benchmark Report](gpu-micro-benchmark-report.md)
+
 ## Dashboard Screenshots
 
 Dashboard screenshots may be committed only after review for secrets, private access labels, account identifiers, raw logs, and unreleased claims. Prefer synthetic or sanitized screenshots until real evidence is approved.

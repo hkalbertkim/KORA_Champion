@@ -1,0 +1,83 @@
+{
+  "benchmark_type": "gpu_micro_benchmark",
+  "claim_level": "gpu_micro_benchmark_measured",
+  "cuda_available": true,
+  "ended_at_utc": "2026-06-05T07:05:31.479665+00:00",
+  "failed_units": 0,
+  "gpu_count": 2,
+  "gpu_memory_average_mb": 314.5,
+  "gpu_memory_max_mb": 629.0,
+  "gpu_model": [
+    "NVIDIA H100 80GB HBM3"
+  ],
+  "gpu_utilization_average": 7.5,
+  "gpu_utilization_max": 15.0,
+  "runtime_seconds": 0.836763,
+  "snapshot_after": {
+    "captured_at_utc": "2026-06-05T07:05:31.522808+00:00",
+    "collector": "nvidia-smi",
+    "cuda_available": true,
+    "gpu_count": 2,
+    "gpus": [
+      {
+        "index": 0,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 629.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 113.07,
+        "temperature_c": 33.0,
+        "utilization_gpu_percent": 15.0
+      },
+      {
+        "index": 1,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 629.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 97.59,
+        "temperature_c": 31.0,
+        "utilization_gpu_percent": 15.0
+      }
+    ],
+    "status": "ok",
+    "warnings": []
+  },
+  "snapshot_before": {
+    "captured_at_utc": "2026-06-05T07:05:29.393287+00:00",
+    "collector": "nvidia-smi",
+    "cuda_available": true,
+    "gpu_count": 2,
+    "gpus": [
+      {
+        "index": 0,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 0.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 74.52,
+        "temperature_c": 32.0,
+        "utilization_gpu_percent": 0.0
+      },
+      {
+        "index": 1,
+        "memory_total_mb": 81559.0,
+        "memory_used_mb": 0.0,
+        "name": "NVIDIA H100 80GB HBM3",
+        "power_draw_watts": 69.12,
+        "temperature_c": 29.0,
+        "utilization_gpu_percent": 0.0
+      }
+    ],
+    "status": "ok",
+    "warnings": []
+  },
+  "started_at_utc": "2026-06-05T07:05:29.345852+00:00",
+  "successful_units": 10000,
+  "throughput_units_per_second": 11950.815225,
+  "torch_available": true,
+  "warnings": [
+    "not_gpu_reduction_evidence",
+    "not_infrastructure_reduction_evidence"
+  ],
+  "workload_id": "gpu_micro_benchmark_10000",
+  "workload_size": 10000,
+  "workload_unit_type": "matrix_multiply_unit"
+}
