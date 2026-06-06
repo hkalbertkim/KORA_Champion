@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KORA Champion Dashboard Evidence View</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #5d6875;
+      --line: #d9dee5;
+      --blue: #1d5fd1;
+      --green: #157347;
+      --amber: #9a6700;
+      --red: #b42318;
+      --shadow: 0 8px 24px rgba(22, 32, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    header {
+      background: #101820;
+      color: white;
+      padding: 48px 24px 34px;
+    }
+
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .eyebrow {
+      color: #9dd3ff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.12; }
+    h1 { margin-top: 10px; font-size: clamp(34px, 5vw, 62px); letter-spacing: 0; }
+    h2 { font-size: 26px; margin-bottom: 16px; }
+    h3 { font-size: 16px; }
+    p { margin: 0; color: var(--muted); }
+    header p { color: #d5dde6; max-width: 850px; margin-top: 14px; font-size: 18px; }
+
+    .topline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: #f1f7ff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    main { padding: 28px 24px 54px; }
+    section { margin: 30px auto 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 14px;
+    }
+
+    .card, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .card { padding: 18px; min-height: 152px; }
+    .metric {
+      margin-top: 12px;
+      font-size: 28px;
+      font-weight: 780;
+      color: var(--blue);
+      overflow-wrap: anywhere;
+    }
+    .secondary { margin-top: 8px; font-size: 13px; }
+    .status {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 8px;
+      border-radius: 6px;
+      background: #edf4ff;
+      color: #164c9c;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .panel { padding: 20px; }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+    .step {
+      border-left: 4px solid var(--blue);
+      background: #fbfcfe;
+      padding: 14px;
+      border-radius: 6px;
+    }
+    .step strong { display: block; color: var(--blue); font-size: 13px; margin-bottom: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: #334155; background: #f1f4f8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    .two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .claim-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); }
+    li { margin: 6px 0; }
+    .allowed h3 { color: var(--green); }
+    .prohibited h3 { color: var(--red); }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .note {
+      border-left: 4px solid var(--amber);
+      background: #fff8e6;
+      padding: 14px;
+      border-radius: 6px;
+      color: #4f3800;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 720px) {
+      header { padding-top: 34px; }
+      main { padding-left: 14px; padding-right: 14px; }
+      table { font-size: 12px; }
+      th, td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">KORA Champion dashboard evidence view</div>
+      <h1>KORA benchmarks when H100 should be used.</h1>
+      <p>KORA의 실증 목표는 H100을 많이 쓰는 것이 아니라, H100을 써야 하는 요청과 쓰지 않아도 되는 요청을 구분하는 것이다.</p>
+      <div class="topline">
+        <span class="pill">Static local dashboard</span>
+        <span class="pill">No backend</span>
+        <span class="pill">No live calls</span>
+        <span class="pill">No runtime access</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>KPI Cards</h2>
+      <div id="cards" class="grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Evidence Chain Timeline</h2>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <section class="two">
+      <div class="panel">
+        <h2>Routing Selectivity</h2>
+        <table>
+          <thead><tr><th>Metric</th><th>100K</th><th>1M</th></tr></thead>
+          <tbody id="routingRows"></tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>H100 Measured Execution</h2>
+        <table>
+          <thead><tr><th>Metric</th><th>10K routed subset</th><th>50K saturation subset</th></tr></thead>
+          <tbody id="h100Rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Multi-Profile Robustness</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Profile</th>
+            <th>local_gpu %</th>
+            <th>cache %</th>
+            <th>provider %</th>
+            <th>fallback %</th>
+            <th>acceptable</th>
+            <th>unsafe</th>
+            <th>GPU demand reduction</th>
+          </tr>
+        </thead>
+        <tbody id="profileRows"></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Evidence Links</h2>
+      <table>
+        <thead><tr><th>Category</th><th>Artifact</th><th>What it proves</th><th>What it does not prove</th></tr></thead>
+        <tbody id="evidenceRows"></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Demo Capture Mode</h2>
+      <table>
+        <thead><tr><th>Scene</th><th>Metric to show</th><th>Evidence source</th><th>Boundary note</th></tr></thead>
+        <tbody id="demoRows"></tbody>
+      </table>
+      <div class="note">Suggested overlay: Benchmark evidence for execution-path selectivity. Not production savings evidence.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Claim Boundaries</h2>
+      <div class="claim-list">
+        <div class="allowed">
+          <h3>Allowed Claims</h3>
+          <ul id="allowedClaims"></ul>
+        </div>
+        <div class="prohibited">
+          <h3>Prohibited Claims</h3>
+          <ul id="prohibitedClaims"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const dashboardData = {
+      summary_cards: [
+        ["Provider Live Evidence", "1 successful call", "147 tokens, 2187.0 ms", "measured partial"],
+        ["H100 Runtime Evidence", "11950.815225 units/sec", "10,000-unit measured micro benchmark", "measured"],
+        ["100K Routing Selectivity", "31.496734% demand reduction", "acceptable 1.0, unsafe 0.0", "dry-run routing"],
+        ["H100 Routed Subset", "5707.417245 req/sec", "10,000 routed GPU requests, error rate 0.0", "measured"],
+        ["Multi-Profile Robustness", "5 profiles", "acceptable 1.0 and unsafe 0.0 across profiles", "dry-run robustness"],
+        ["1M Scale Stability", "1,000,000 requests", "31.564469% demand reduction", "dry-run scale"],
+        ["1M Saturation Subset", "6691.853913 req/sec", "50,000 routed GPU requests, error rate 0.0", "measured"],
+        ["Claim Boundary Status", "public-safe", "benchmark evidence, not production savings", "bounded claims"]
+      ],
+      timeline: [
+        ["Provider live path", "Bounded live provider sample", "One successful measured provider call with token and latency evidence.", "../evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json"],
+        ["GPU smoke and micro", "H100 runtime readiness", "Measured 10,000-unit micro benchmark with throughput, utilization, and memory.", "../evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json"],
+        ["GPU-004A", "Routing benchmark framework", "Schema, workloads, oracle labels, routers, and metrics implemented.", "../reports/kora-champion-gpu-004a-routing-benchmark-framework-report.md"],
+        ["GPU-004B", "100K dry-run routing comparison", "KORA route distribution and compute-weighted GPU demand comparison.", "../evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json"],
+        ["GPU-004C", "H100 routed subset measurement", "Measured 10,000 GPU-routed benchmark requests on H100.", "../evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json"],
+        ["GPU-005", "Multi-profile routing robustness", "Dry-run route robustness across five workload profiles.", "../evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json"],
+        ["GPU-006", "1M scale and H100 saturation", "1M dry-run scale summary and 50K measured H100 saturation subset.", "../reports/kora-champion-gpu-006-1m-scale-saturation-benchmark-report.md"],
+        ["Goal 007", "Interim evidence package", "Inventory, package report, GitHub table, demo plan, and package index.", "../reports/ai-champion-interim-package-index.md"]
+      ],
+      routing: {
+        rows: [
+          ["local_gpu %", "21.203", "21.2152"],
+          ["cache %", "13.637", "13.6364"],
+          ["provider %", "13.635", "13.6362"],
+          ["fallback %", "9.09", "9.0908"],
+          ["acceptable route rate", "1.0", "1.0"],
+          ["unsafe misroute rate", "0.0", "0.0"],
+          ["compute-weighted GPU demand reduction", "31.496734%", "31.564469%"]
+        ]
+      },
+      h100: {
+        rows: [
+          ["measured subset count", "10,000", "50,000"],
+          ["runtime seconds", "1.752106", "7.471771"],
+          ["throughput req/sec", "5707.417245", "6691.853913"],
+          ["throughput compute-weight/sec", "1279400.497529", "1498185.903203"],
+          ["GPU utilization avg/max", "15.444444 / 23.0", "19.161765 / 21.0"],
+          ["GPU memory MB avg/max", "600.0 / 717.0", "686.029412 / 717.0"],
+          ["error count/rate", "0 / 0.0", "0 / 0.0"]
+        ]
+      },
+      profiles: [
+        ["mixed_realistic_100k", "21.203", "13.637", "13.635", "9.09", "1.0", "0.0", "31.496734%"],
+        ["gpu_heavy_100k", "83.314", "0.0", "12.5", "0.0", "1.0", "0.0", "5.802033%"],
+        ["cache_heavy_100k", "0.0", "50.001", "0.0", "0.0", "1.0", "0.0", "100.0%"],
+        ["adversarial_100k", "14.285", "0.0", "14.285", "28.572", "1.0", "0.0", "44.075516%"],
+        ["service_replay_10k", "22.21", "11.12", "11.1", "11.1", "1.0", "0.0", "27.400575%"]
+      ],
+      evidence: [
+        ["Provider", "../evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json", "A bounded live provider call completed successfully.", "Provider cost reduction or full live workload comparison."],
+        ["GPU", "../evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json", "H100 runtime path produced measured throughput, utilization, and memory evidence.", "Route-aware GPU selectivity."],
+        ["Routing", "../evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json", "KORA can compare 100K dry-run routing behavior and compute-weighted GPU demand.", "Measured GPU reduction."],
+        ["H100 routed subset", "../evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json", "GPU-routed subset execution was measured on H100.", "Full 100K all-GPU measured execution."],
+        ["Multi-profile", "../evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json", "KORA route robustness across five dry-run workload profiles.", "Production representativeness."],
+        ["1M scale", "../evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json", "KORA can run 1M dry-run routing scale evaluation.", "Full 1M measured GPU execution."],
+        ["1M saturation", "../evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json", "KORA measured a bounded 50K H100 routed subset from the 1M benchmark.", "Full 1M all-GPU measured execution."]
+      ],
+      demo: [
+        ["Core message", "KORA benchmarks when H100 should be used.", "../reports/ai-champion-interim-evidence-package-report.md", "Do not state production savings."],
+        ["Provider path", "1 successful call, 147 tokens, 2187.0 ms", "../evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json", "Partial sample only."],
+        ["100K routing selectivity", "31.496734% demand reduction, acceptable 1.0, unsafe 0.0", "../evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json", "Dry-run routing comparison."],
+        ["H100 routed subset", "10,000 requests, 1.752106 seconds, 5707.417245 req/sec", "../evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json", "Bounded subset, not full workload."],
+        ["Multi-profile robustness", "Five profiles, acceptable 1.0, unsafe 0.0", "../evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json", "Dry-run profile benchmark."],
+        ["1M scale stability", "1,000,000 requests, 31.564469% demand reduction", "../evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json", "Dry-run scale plus estimated runtime."],
+        ["Saturation subset", "50,000 requests, 7.471771 seconds, 6691.853913 req/sec", "../evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json", "Not full 1M all-GPU execution."]
+      ],
+      allowed: [
+        "KORA has bounded live provider evidence.",
+        "KORA has measured H100 runtime evidence.",
+        "KORA has routing framework evidence.",
+        "KORA has 100K routing selectivity evidence.",
+        "KORA has measured H100 routed subset evidence.",
+        "KORA has multi-profile routing robustness evidence.",
+        "KORA has 1M dry-run scale stability evidence.",
+        "KORA has bounded 1M H100 saturation subset evidence.",
+        "KORA can show compute-weighted GPU demand reduction in benchmark workloads."
+      ],
+      prohibited: [
+        "production cost reduction",
+        "customer workload savings",
+        "real infrastructure savings",
+        "proven 10x savings",
+        "full provider/GPU live workload comparison",
+        "full 1M all-GPU measured execution",
+        "production representativeness",
+        "final paper-ready result"
+      ]
+    };
+
+    const link = (path) => `<a href="${path}">${path}</a>`;
+    const td = (value, cls = "") => `<td class="${cls}">${value}</td>`;
+
+    document.getElementById("cards").innerHTML = dashboardData.summary_cards.map(card => `
+      <article class="card">
+        <h3>${card[0]}</h3>
+        <div class="metric">${card[1]}</div>
+        <p class="secondary">${card[2]}</p>
+        <span class="status">${card[3]}</span>
+      </article>
+    `).join("");
+
+    document.getElementById("timeline").innerHTML = dashboardData.timeline.map(item => `
+      <div class="step">
+        <strong>${item[0]}</strong>
+        <h3>${item[1]}</h3>
+        <p>${item[2]}</p>
+        <p class="secondary">${link(item[3])}</p>
+      </div>
+    `).join("");
+
+    document.getElementById("routingRows").innerHTML = dashboardData.routing.rows
+      .map(row => `<tr>${td(row[0])}${td(row[1], "num")}${td(row[2], "num")}</tr>`).join("");
+
+    document.getElementById("h100Rows").innerHTML = dashboardData.h100.rows
+      .map(row => `<tr>${td(row[0])}${td(row[1], "num")}${td(row[2], "num")}</tr>`).join("");
+
+    document.getElementById("profileRows").innerHTML = dashboardData.profiles
+      .map(row => `<tr>${row.map((cell, idx) => td(cell, idx ? "num" : "")).join("")}</tr>`).join("");
+
+    document.getElementById("evidenceRows").innerHTML = dashboardData.evidence
+      .map(row => `<tr>${td(row[0])}${td(link(row[1]))}${td(row[2])}${td(row[3])}</tr>`).join("");
+
+    document.getElementById("demoRows").innerHTML = dashboardData.demo
+      .map(row => `<tr>${td(row[0])}${td(row[1])}${td(link(row[2]))}${td(row[3])}</tr>`).join("");
+
+    document.getElementById("allowedClaims").innerHTML = dashboardData.allowed.map(item => `<li>${item}</li>`).join("");
+    document.getElementById("prohibitedClaims").innerHTML = dashboardData.prohibited.map(item => `<li>${item}</li>`).join("");
+  </script>
+</body>
+</html>
