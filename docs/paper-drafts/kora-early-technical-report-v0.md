@@ -2,7 +2,7 @@
 
 ## Draft Status Note
 
-This is an early technical report draft v0 for KORA Champion. It assembles the current public evidence chain into a coherent report structure. It is not a submission package, not a completed publication, and not a deployed-system result.
+This is an early technical report draft v0 for KORA Champion. It assembles the current public evidence chain into a report structure for review. It is not a submission package, not a completed publication, and not a deployed-system result.
 
 Core message:
 
@@ -12,13 +12,24 @@ KORA의 실증 목표는 H100을 많이 쓰는 것이 아니라, H100을 써야 
 
 ## Abstract
 
-KORA Champion evaluates AI workload routing as an execution-path selectivity problem. Rather than benchmarking H100 as a raw accelerator for every request, KORA benchmarks when H100 should be used. The current evidence package routes benchmark workloads across deterministic, cache, CPU, provider, GPU, and fallback paths, then reports route correctness, path distribution, and compute-weighted GPU demand reduction in benchmark workloads. The package includes bounded live provider evidence, measured H100 runtime evidence, 100K routing selectivity evidence, bounded H100 routed subset measurement, multi-profile routing robustness evidence, 1M dry-run scale stability evidence, bounded 1M H100 saturation subset evidence, a static dashboard evidence view, Studio evidence surface planning, and early figure/table drafts. The current results support an interim benchmark evidence claim for execution-path selectivity. They do not establish deployed workload savings, complete live path comparison, or broad workload generality.
+KORA Champion evaluates AI workload routing as an execution-path selectivity problem. Rather than benchmarking H100 as an accelerator applied to every request, KORA benchmarks when H100 should be used. The current evidence package routes benchmark workloads across deterministic, cache, CPU, provider, GPU, and fallback paths, then reports route correctness, path distribution, and compute-weighted GPU demand reduction in benchmark workloads. The package includes bounded live provider evidence, measured H100 runtime evidence, 100K routing selectivity evidence, bounded H100 routed subset measurement, multi-profile routing robustness evidence, 1M dry-run scale stability evidence, bounded 1M H100 saturation subset evidence, a static dashboard evidence view, Studio evidence surface planning, and early figure/table drafts. The current results support an interim benchmark evidence claim for execution-path selectivity. They do not establish deployed workload outcomes, complete live route comparison, or broad workload generality.
+
+## Reader Interpretation Guide
+
+Read this draft with four evidence categories in mind:
+
+- Dry-run routing evidence: route decisions and benchmark metrics are computed without executing every live path.
+- Measured H100 subset evidence: selected GPU-routed benchmark subsets are executed and measured on H100.
+- Static evidence surfaces: dashboard and Studio assets package existing evidence for review.
+- Interim report package: July 31 reports organize evidence and claim boundaries.
+
+The main interpretation should be: KORA has benchmark evidence for execution-path selectivity. The draft should not be read as evidence for deployed outcomes or broad workload generality.
 
 ## 1. Introduction
 
-Accelerator benchmarking often asks how fast a GPU can run a workload. KORA asks a different question: when should H100 be used at all?
+Accelerator benchmarking often asks how fast a GPU can run a workload. KORA asks a narrower and more route-aware question: when should H100 be used?
 
-This distinction matters because AI request streams can contain work that is better framed as deterministic handling, cache lookup, CPU execution, provider execution, GPU execution, or fallback. A benchmark that routes all requests to GPU by default can miss the core system behavior: selecting an appropriate execution path for each request.
+This distinction matters because benchmark request streams can contain work that is better framed as deterministic handling, cache lookup, CPU execution, provider execution, GPU execution, or fallback. A benchmark that routes all requests to GPU by default can miss the system behavior KORA is designed to test: selecting an appropriate execution path for each request.
 
 KORA Champion therefore frames the current evidence chain around execution-path selectivity. The system evaluates route decisions across benchmark workloads, records path distribution and correctness metrics, and connects the GPU-routed subset to bounded H100 routed subset measurement.
 
@@ -72,17 +83,17 @@ The benchmark evidence chain uses:
 
 Table 1 is drafted in `docs/paper-assets/draft-table-1-evidence-artifact-summary.md`. The summary below highlights the current evidence chain.
 
-| Evidence area | Current status | Primary source |
-| --- | --- | --- |
-| Provider path | Bounded live provider evidence exists | `docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json` |
-| H100 runtime | Measured H100 micro benchmark evidence exists | `docs/evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json` |
-| Routing framework | Route taxonomy, oracle labels, router policies, and metrics exist | `docs/reports/kora-champion-gpu-004a-routing-benchmark-framework-report.md` |
-| 100K routing | 100K dry-run routing selectivity evidence exists | `docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json` |
-| H100 routed subset | Bounded H100 routed subset measurement exists | `docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json` |
-| Multi-profile robustness | Five benchmark profiles have route robustness evidence | `docs/evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json` |
-| 1M scale and saturation | 1M dry-run scale plus bounded saturation subset evidence exists | `docs/evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json` |
-| Dashboard | Static dashboard evidence view exists | `docs/dashboard/index.html` |
-| Studio | Studio evidence surface planning exists | `docs/reports/kora-studio-launch-evidence-plan.md` |
+| Evidence area | Current status | Primary source | Evidence type |
+| --- | --- | --- | --- |
+| Provider path | Bounded live provider evidence exists | `docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json` | Bounded measured |
+| H100 runtime | Measured H100 micro benchmark evidence exists | `docs/evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json` | Measured |
+| Routing framework | Route taxonomy, oracle labels, router policies, and metrics exist | `docs/reports/kora-champion-gpu-004a-routing-benchmark-framework-report.md` | Framework/report |
+| 100K routing | 100K dry-run routing selectivity evidence exists | `docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json` | Dry-run |
+| H100 routed subset | Bounded H100 routed subset measurement exists | `docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json` | Measured |
+| Multi-profile robustness | Five benchmark profiles have route robustness evidence | `docs/evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json` | Dry-run |
+| 1M scale and saturation | 1M dry-run scale plus bounded saturation subset evidence exists | `docs/evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json` | Dry-run plus measured subset |
+| Dashboard | Static dashboard evidence view exists | `docs/dashboard/index.html` | Static package |
+| Studio | Studio evidence surface planning exists | `docs/reports/kora-studio-launch-evidence-plan.md` | Static package |
 
 ## 6. Results and Interpretation
 
@@ -92,7 +103,7 @@ The bounded provider sample recorded 1 successful provider call, 0 failed calls,
 
 Source: `docs/reports/july-31-interim-result-report-draft.md`.
 
-This does not support broad live path comparison across provider and GPU execution.
+Interpretation boundary: this is not a broad live comparison across provider and GPU routes.
 
 ### 6.2 H100 Runtime Evidence
 
@@ -104,7 +115,7 @@ Sources:
 - `docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json`
 - `docs/evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json`
 
-This supports measured H100 runtime evidence in bounded benchmark settings. It does not support complete GPU-only measurement for the whole million-request benchmark.
+Interpretation boundary: this supports measured H100 runtime evidence in bounded benchmark settings. It does not measure GPU execution for every request in the million-request benchmark.
 
 ### 6.3 100K Execution-Path Selectivity
 
@@ -122,7 +133,7 @@ The 100K dry-run routing benchmark recorded:
 
 Source: `docs/reports/kora-champion-gpu-004b-100k-dry-run-routing-comparison-report.md`.
 
-This supports 100K routing selectivity evidence. It does not support measured GPU runtime reduction by itself because this benchmark is dry-run route evidence.
+Interpretation boundary: this supports 100K routing selectivity evidence. It does not support measured GPU runtime reduction by itself because this result is dry-run route evidence.
 
 ### 6.4 Bounded H100 Routed Subset Measurement
 
@@ -130,7 +141,7 @@ The routed subset measurement connects KORA routing output to measured H100 exec
 
 Source: `docs/reports/kora-champion-gpu-004c-h100-routed-subset-measurement-report.md`.
 
-This supports bounded H100 routed subset measurement. It does not support complete workload measurement.
+Interpretation boundary: this supports bounded H100 routed subset measurement. It does not measure every request in the source benchmark under GPU execution.
 
 ### 6.5 Multi-Profile Robustness
 
@@ -138,7 +149,7 @@ GPU-005 evaluates execution-path selectivity across five benchmark profiles: mix
 
 Source: `docs/reports/kora-champion-gpu-005-multi-profile-routing-robustness-report.md`.
 
-This supports benchmark profile robustness evidence. It does not establish broad deployed-workload generality.
+Interpretation boundary: this supports benchmark profile robustness evidence. It does not establish broad deployed-workload generality.
 
 ### 6.6 1M Scale and Bounded Saturation
 
@@ -146,7 +157,7 @@ The 1M dry-run benchmark recorded 1,000,000 requests, acceptable route rate 1.0,
 
 Source: `docs/reports/kora-champion-gpu-006-1m-scale-saturation-benchmark-report.md`.
 
-This supports 1M dry-run scale stability evidence and bounded 1M H100 saturation subset evidence. It does not support complete GPU-only execution for all million requests.
+Interpretation boundary: this supports 1M dry-run scale stability evidence and bounded 1M H100 saturation subset evidence. It does not measure GPU execution for all million requests.
 
 ## 7. Dashboard and Studio Evidence Surface
 
@@ -158,7 +169,7 @@ KORA Studio is positioned as a Studio evidence surface for explaining execution-
 - `docs/reports/kora-studio-demo-video-storyboard.md`
 - `docs/demo-capture/july31-package-index.md`
 
-Dashboard and Studio artifacts help explain and navigate the evidence chain. They are static or planned package assets; they do not create new runtime measurements.
+Interpretation boundary: dashboard and Studio artifacts explain and navigate the evidence chain. They are static or planned package assets; they do not create new runtime measurements.
 
 ## 8. Claim Boundaries
 
@@ -166,9 +177,29 @@ The safe central claim is:
 
 KORA can show compute-weighted GPU demand reduction in benchmark workloads through execution-path selectivity.
 
-Supported evidence includes bounded provider evidence, measured H100 runtime evidence, routing framework evidence, 100K routing selectivity evidence, bounded H100 routed subset measurement, multi-profile routing robustness evidence, 1M dry-run scale stability evidence, bounded 1M H100 saturation subset evidence, dashboard evidence view, Studio evidence surface planning, and paper asset drafts.
+Supported evidence:
 
-The current package does not support deployed savings, customer workload outcomes, broad workload generality, complete live comparison of provider and GPU routes, complete million-request GPU-only measurement, external approval status, or finished publication readiness.
+- Bounded provider evidence.
+- Measured H100 runtime evidence.
+- Routing framework evidence.
+- 100K routing selectivity evidence.
+- Bounded H100 routed subset measurement.
+- Multi-profile routing robustness evidence.
+- 1M dry-run scale stability evidence.
+- Bounded 1M H100 saturation subset evidence.
+- Static dashboard evidence view.
+- Studio evidence surface planning.
+- Paper asset drafts.
+
+Unsupported interpretations:
+
+- Deployed outcome claims.
+- Customer workload outcome claims.
+- Broad workload generality claims.
+- Complete live comparison across all routes.
+- GPU execution measurement for every request in the million-request benchmark.
+- External approval status.
+- Finished publication readiness.
 
 ## 9. Limitations
 
@@ -181,18 +212,21 @@ Current limitations:
 - Benchmark profile coverage does not establish broad deployed-workload generality.
 - Dashboard and Studio artifacts package evidence but do not add new runtime measurements.
 - Figure and table assets are draft-level and need review.
+- The report has not completed a sentence-level evidence traceability review.
+- The report has not completed figure/table caption review.
+- The report should remain labeled as an early technical report until claim review and artifact review are complete.
 
 ## 10. Future Work
 
 Recommended future work:
 
-- Review and tighten the technical report draft.
-- Complete claim boundary review.
+- Review and tighten sentence-level claims.
+- Complete evidence-to-sentence traceability review.
 - Draft the remaining figures and tables.
 - Add public-safe dashboard and Studio capture artifacts when ready.
 - Consider additional bounded provider sampling if needed.
 - Consider repeated bounded H100 routed subset measurement if stronger runtime confidence is needed.
-- Prepare a later reviewed report version only after evidence and caption review.
+- Prepare a v0.1 report package only after claim and caption review.
 
 ## Appendix A. Evidence Artifact Index
 
