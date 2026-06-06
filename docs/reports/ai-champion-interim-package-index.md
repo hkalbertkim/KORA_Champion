@@ -11,6 +11,11 @@ KORA Champion has an interim evidence package showing provider path readiness, H
 | `docs/reports/ai-champion-interim-evidence-package-report.md` | July 31 interim report basis |
 | `docs/reports/ai-champion-github-evidence-table.md` | Public-facing GitHub evidence table |
 | `docs/reports/ai-champion-demo-readiness-plan.md` | Demo video and dashboard readiness plan |
+| `docs/reports/july-31-interim-result-report-draft.md` | July 31 interim result report draft |
+| `docs/reports/july-31-interim-result-report-evidence-table.md` | July 31 evidence table appendix |
+| `docs/reports/july-31-interim-result-report-claim-boundary.md` | July 31 claim boundary appendix |
+| `docs/reports/july-31-interim-result-report-next-work-plan.md` | July 31 next work and second-stage roadmap |
+| `docs/reports/july-31-interim-result-report-executive-summary.md` | July 31 executive summary |
 
 ## Supporting Benchmark Reports
 
