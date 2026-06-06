@@ -1,0 +1,13 @@
+{
+  "commit_strategy": "generation_config_and_hash",
+  "fixture_path_not_committed": "docs/evidence/routing-benchmark-scale/20260606-052807-mixed_realistic_1m.json",
+  "fixture_sha256": "eafe7fca40f1e415c5ed6ba790ca3dc9a932ccf0039cfde88e2e54d4ac0dee0c",
+  "fixture_size_bytes": 919585340,
+  "h100_execution_performed": false,
+  "live_provider_execution_performed": false,
+  "profile": "mixed_realistic_1m",
+  "reason_full_fixture_not_committed": "The deterministic 1M fixture JSON is large; committed evidence uses deterministic generation metadata plus comparison outputs.",
+  "request_count": 1000000,
+  "schema_version": "routing_benchmark_scale_generation_v0_1",
+  "seed": 404
+}
