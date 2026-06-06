@@ -1,0 +1,360 @@
+{
+  "schema_version": "dashboard_evidence_view_v0_1",
+  "title": "KORA Champion Dashboard Evidence View",
+  "core_message": {
+    "english": "KORA benchmarks when H100 should be used.",
+    "korean": "KORA의 실증 목표는 H100을 많이 쓰는 것이 아니라, H100을 써야 하는 요청과 쓰지 않아도 되는 요청을 구분하는 것이다.",
+    "boundary": "Dashboard evidence view for benchmark execution-path selectivity, not production savings evidence."
+  },
+  "summary_cards": [
+    {
+      "id": "provider_live",
+      "title": "Provider Live Evidence",
+      "metric": "1 successful call",
+      "secondary_metric": "147 tokens, 2187.0 ms",
+      "status": "measured partial",
+      "source": "docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json"
+    },
+    {
+      "id": "h100_runtime",
+      "title": "H100 Runtime Evidence",
+      "metric": "11950.815225 units/sec",
+      "secondary_metric": "10,000-unit measured micro benchmark",
+      "status": "measured",
+      "source": "docs/evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json"
+    },
+    {
+      "id": "routing_100k",
+      "title": "100K Routing Selectivity",
+      "metric": "31.496734% demand reduction",
+      "secondary_metric": "acceptable 1.0, unsafe 0.0",
+      "status": "dry-run routing",
+      "source": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json"
+    },
+    {
+      "id": "h100_routed_subset",
+      "title": "H100 Routed Subset",
+      "metric": "5707.417245 req/sec",
+      "secondary_metric": "10,000 routed GPU requests, error rate 0.0",
+      "status": "measured",
+      "source": "docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json"
+    },
+    {
+      "id": "multi_profile",
+      "title": "Multi-Profile Robustness",
+      "metric": "5 profiles",
+      "secondary_metric": "acceptable 1.0 and unsafe 0.0 across profiles",
+      "status": "dry-run robustness",
+      "source": "docs/evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json"
+    },
+    {
+      "id": "scale_1m",
+      "title": "1M Scale Stability",
+      "metric": "1,000,000 requests",
+      "secondary_metric": "31.564469% demand reduction",
+      "status": "dry-run scale",
+      "source": "docs/evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json"
+    },
+    {
+      "id": "saturation_1m",
+      "title": "1M Saturation Subset",
+      "metric": "6691.853913 req/sec",
+      "secondary_metric": "50,000 routed GPU requests, error rate 0.0",
+      "status": "measured",
+      "source": "docs/evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json"
+    },
+    {
+      "id": "claim_boundary",
+      "title": "Claim Boundary Status",
+      "metric": "public-safe",
+      "secondary_metric": "benchmark evidence, not production savings",
+      "status": "bounded claims",
+      "source": "docs/reports/ai-champion-interim-evidence-inventory.md"
+    }
+  ],
+  "timeline": [
+    {
+      "stage": "Provider live path",
+      "title": "Bounded live provider sample",
+      "summary": "One successful measured provider call with token and latency evidence.",
+      "source": "docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json"
+    },
+    {
+      "stage": "GPU smoke and micro",
+      "title": "H100 runtime readiness",
+      "summary": "Measured 10,000-unit micro benchmark with throughput, utilization, and memory.",
+      "source": "docs/evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json"
+    },
+    {
+      "stage": "GPU-004A",
+      "title": "Routing benchmark framework",
+      "summary": "Schema, workloads, oracle labels, routers, and metrics implemented.",
+      "source": "docs/reports/kora-champion-gpu-004a-routing-benchmark-framework-report.md"
+    },
+    {
+      "stage": "GPU-004B",
+      "title": "100K dry-run routing comparison",
+      "summary": "KORA route distribution and compute-weighted GPU demand comparison.",
+      "source": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json"
+    },
+    {
+      "stage": "GPU-004C",
+      "title": "H100 routed subset measurement",
+      "summary": "Measured 10,000 GPU-routed benchmark requests on H100.",
+      "source": "docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json"
+    },
+    {
+      "stage": "GPU-005",
+      "title": "Multi-profile routing robustness",
+      "summary": "Dry-run route robustness across five workload profiles.",
+      "source": "docs/evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json"
+    },
+    {
+      "stage": "GPU-006",
+      "title": "1M scale and H100 saturation",
+      "summary": "1M dry-run scale summary and 50K measured H100 saturation subset.",
+      "source": "docs/reports/kora-champion-gpu-006-1m-scale-saturation-benchmark-report.md"
+    },
+    {
+      "stage": "Goal 007",
+      "title": "Interim evidence package",
+      "summary": "Inventory, package report, GitHub table, demo plan, and package index.",
+      "source": "docs/reports/ai-champion-interim-package-index.md"
+    }
+  ],
+  "evidence_links": [
+    {
+      "category": "Provider",
+      "artifact_path": "docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json",
+      "what_it_proves": "A bounded live provider call completed successfully.",
+      "what_it_does_not_prove": "Provider cost reduction or full live workload comparison."
+    },
+    {
+      "category": "Provider",
+      "artifact_path": "docs/evidence/live-comparisons/20260604-114009-bedrock-live-normalized-comparison.json",
+      "what_it_proves": "Partial provider evidence can be normalized into a comparison artifact.",
+      "what_it_does_not_prove": "Full provider/GPU live workload comparison."
+    },
+    {
+      "category": "GPU",
+      "artifact_path": "docs/evidence/gpu-runs/20260605-070531-gpu-micro-benchmark.json",
+      "what_it_proves": "H100 runtime path produced measured throughput, utilization, and memory evidence.",
+      "what_it_does_not_prove": "Route-aware GPU selectivity."
+    },
+    {
+      "category": "Routing",
+      "artifact_path": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json",
+      "what_it_proves": "KORA can compare 100K dry-run routing behavior and compute-weighted GPU demand.",
+      "what_it_does_not_prove": "Measured GPU reduction."
+    },
+    {
+      "category": "H100 routed subset",
+      "artifact_path": "docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json",
+      "what_it_proves": "GPU-routed subset execution was measured on H100.",
+      "what_it_does_not_prove": "Full 100K all-GPU measured execution."
+    },
+    {
+      "category": "Multi-profile",
+      "artifact_path": "docs/evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json",
+      "what_it_proves": "KORA route robustness across five dry-run workload profiles.",
+      "what_it_does_not_prove": "Production representativeness."
+    },
+    {
+      "category": "1M scale",
+      "artifact_path": "docs/evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json",
+      "what_it_proves": "KORA can run 1M dry-run routing scale evaluation.",
+      "what_it_does_not_prove": "Full 1M measured GPU execution."
+    },
+    {
+      "category": "1M saturation",
+      "artifact_path": "docs/evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json",
+      "what_it_proves": "KORA measured a bounded 50K H100 routed subset from the 1M benchmark.",
+      "what_it_does_not_prove": "Full 1M all-GPU measured execution."
+    }
+  ],
+  "metrics": {
+    "provider": {
+      "successful_provider_calls": 1,
+      "failed_provider_calls": 0,
+      "input_tokens": 19,
+      "output_tokens": 128,
+      "total_tokens": 147,
+      "measured_latency_ms": 2187.0,
+      "claim_level": "measured_provider_partial"
+    },
+    "gpu_004c_h100": {
+      "measured_subset_count": 10000,
+      "runtime_seconds": 1.752106,
+      "throughput_requests_per_second": 5707.417245,
+      "throughput_compute_weight_per_second": 1279400.497529,
+      "gpu_utilization_avg": 15.444444,
+      "gpu_utilization_max": 23.0,
+      "gpu_memory_mb_avg": 600.0,
+      "gpu_memory_mb_max": 717.0,
+      "error_count": 0,
+      "error_rate": 0.0,
+      "estimated_all_gpu_runtime_seconds": 5.429518,
+      "estimated_avoided_gpu_runtime_seconds": 1.710121
+    },
+    "routing_100k": {
+      "local_gpu_percentage": 21.203,
+      "cache_percentage": 13.637,
+      "provider_percentage": 13.635,
+      "fallback_percentage": 9.09,
+      "acceptable_route_rate": 1.0,
+      "unsafe_misroute_rate": 0.0,
+      "compute_weighted_gpu_demand_reduction_percentage": 31.496734
+    },
+    "gpu_005_profiles": [
+      {
+        "profile": "mixed_realistic_100k",
+        "local_gpu_percentage": 21.203,
+        "cache_percentage": 13.637,
+        "provider_percentage": 13.635,
+        "fallback_percentage": 9.09,
+        "acceptable_route_rate": 1.0,
+        "unsafe_misroute_rate": 0.0,
+        "compute_weighted_gpu_demand_reduction_percentage": 31.496734
+      },
+      {
+        "profile": "gpu_heavy_100k",
+        "local_gpu_percentage": 83.314,
+        "cache_percentage": 0.0,
+        "provider_percentage": 12.5,
+        "fallback_percentage": 0.0,
+        "acceptable_route_rate": 1.0,
+        "unsafe_misroute_rate": 0.0,
+        "compute_weighted_gpu_demand_reduction_percentage": 5.802033
+      },
+      {
+        "profile": "cache_heavy_100k",
+        "local_gpu_percentage": 0.0,
+        "cache_percentage": 50.001,
+        "provider_percentage": 0.0,
+        "fallback_percentage": 0.0,
+        "acceptable_route_rate": 1.0,
+        "unsafe_misroute_rate": 0.0,
+        "compute_weighted_gpu_demand_reduction_percentage": 100.0
+      },
+      {
+        "profile": "adversarial_100k",
+        "local_gpu_percentage": 14.285,
+        "cache_percentage": 0.0,
+        "provider_percentage": 14.285,
+        "fallback_percentage": 28.572,
+        "acceptable_route_rate": 1.0,
+        "unsafe_misroute_rate": 0.0,
+        "compute_weighted_gpu_demand_reduction_percentage": 44.075516
+      },
+      {
+        "profile": "service_replay_10k",
+        "local_gpu_percentage": 22.21,
+        "cache_percentage": 11.12,
+        "provider_percentage": 11.1,
+        "fallback_percentage": 11.1,
+        "acceptable_route_rate": 1.0,
+        "unsafe_misroute_rate": 0.0,
+        "compute_weighted_gpu_demand_reduction_percentage": 27.400575
+      }
+    ],
+    "gpu_006_scale": {
+      "total_requests": 1000000,
+      "local_gpu_percentage": 21.2152,
+      "cache_percentage": 13.6364,
+      "provider_percentage": 13.6362,
+      "fallback_percentage": 9.0908,
+      "acceptable_route_rate": 1.0,
+      "unsafe_misroute_rate": 0.0,
+      "compute_weighted_gpu_demand_reduction_percentage": 31.564469,
+      "estimated_all_gpu_runtime_seconds": 54.230652,
+      "estimated_kora_gpu_routed_runtime_seconds": 37.113035,
+      "estimated_avoided_gpu_runtime_seconds": 17.117617
+    },
+    "gpu_006_saturation": {
+      "measured_subset_count": 50000,
+      "runtime_seconds": 7.471771,
+      "throughput_requests_per_second": 6691.853913,
+      "throughput_compute_weight_per_second": 1498185.903203,
+      "gpu_utilization_avg": 19.161765,
+      "gpu_utilization_max": 21.0,
+      "gpu_memory_mb_avg": 686.029412,
+      "gpu_memory_mb_max": 717.0,
+      "error_count": 0,
+      "error_rate": 0.0
+    }
+  },
+  "claim_boundaries": {
+    "allowed_claims": [
+      "KORA has bounded live provider evidence.",
+      "KORA has measured H100 runtime evidence.",
+      "KORA has routing framework evidence.",
+      "KORA has 100K routing selectivity evidence.",
+      "KORA has measured H100 routed subset evidence.",
+      "KORA has multi-profile routing robustness evidence.",
+      "KORA has 1M dry-run scale stability evidence.",
+      "KORA has bounded 1M H100 saturation subset evidence.",
+      "KORA can show compute-weighted GPU demand reduction in benchmark workloads."
+    ],
+    "prohibited_claims": [
+      "production cost reduction",
+      "customer workload savings",
+      "real infrastructure savings",
+      "proven 10x savings",
+      "full provider/GPU live workload comparison",
+      "full 1M all-GPU measured execution",
+      "production representativeness",
+      "final paper-ready result"
+    ]
+  },
+  "demo_capture_sections": [
+    {
+      "scene_title": "Core message",
+      "metric_to_show": "KORA benchmarks when H100 should be used.",
+      "evidence_source": "docs/reports/ai-champion-interim-evidence-package-report.md",
+      "narration_note": "Open with execution-path selectivity, not raw acceleration.",
+      "claim_boundary_note": "Do not state production savings."
+    },
+    {
+      "scene_title": "Provider path",
+      "metric_to_show": "1 successful call, 147 tokens, 2187.0 ms",
+      "evidence_source": "docs/evidence/provider-live-runs/20260604-112641-provider-live-bedrock.json",
+      "narration_note": "Provider path has bounded live evidence.",
+      "claim_boundary_note": "Partial sample only."
+    },
+    {
+      "scene_title": "100K routing selectivity",
+      "metric_to_show": "31.496734% compute-weighted GPU demand reduction, acceptable 1.0, unsafe 0.0",
+      "evidence_source": "docs/evidence/routing-benchmark-runs/20260605-101501-mixed_realistic_100k-100000.json",
+      "narration_note": "Show routing demand reduction in benchmark workload.",
+      "claim_boundary_note": "Dry-run routing comparison."
+    },
+    {
+      "scene_title": "H100 routed subset",
+      "metric_to_show": "10,000 requests, 1.752106 seconds, 5707.417245 req/sec",
+      "evidence_source": "docs/evidence/gpu-routed-subset-runs/20260605-124147937820Z-mixed_realistic_100k-kora-router-h100-subset.json",
+      "narration_note": "Show measured routed subset execution.",
+      "claim_boundary_note": "Bounded subset, not full workload."
+    },
+    {
+      "scene_title": "Multi-profile robustness",
+      "metric_to_show": "Five profiles, acceptable 1.0, unsafe 0.0",
+      "evidence_source": "docs/evidence/routing-benchmark-multi-profile/20260605-132228-multi-profile-routing-robustness-summary.json",
+      "narration_note": "Show behavior under GPU-heavy, cache-heavy, and adversarial profiles.",
+      "claim_boundary_note": "Dry-run profile benchmark."
+    },
+    {
+      "scene_title": "1M scale stability",
+      "metric_to_show": "1,000,000 requests, 31.564469% compute-weighted GPU demand reduction",
+      "evidence_source": "docs/evidence/routing-benchmark-scale/20260606-052807-gpu-006-scale-summary.json",
+      "narration_note": "Show route stability at scale.",
+      "claim_boundary_note": "Dry-run scale plus estimated runtime."
+    },
+    {
+      "scene_title": "Saturation subset",
+      "metric_to_show": "50,000 requests, 7.471771 seconds, 6691.853913 req/sec",
+      "evidence_source": "docs/evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json",
+      "narration_note": "Show larger bounded measured H100 subset.",
+      "claim_boundary_note": "Not full 1M all-GPU execution."
+    }
+  ]
+}
