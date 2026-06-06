@@ -28,8 +28,9 @@ Missing:
 - Final Studio screenshots.
 - Demo recording or reviewed recording summary.
 - Remaining paper figures and tables beyond Figure 1 and Table 1.
-- Packet-level issue list.
 - Final external sharing review.
+- Sentence-level evidence traceability review for technical report v0.1.
+- Reviewer signoff before broader sharing.
 
 ## What Can Be Reviewed Now
 
@@ -57,7 +58,7 @@ Do not externally share as a final package until:
 
 | Risk | Impact | Mitigation |
 | --- | --- | --- |
-| Benchmark demand metric is misread as deployed outcome | Claim risk | Keep claim boundary sheet attached |
+| Benchmark demand metric is misread as deployed outcome | Claim risk | Keep claim boundary sheet included |
 | Dry-run routing evidence is misread as measured runtime evidence | Evidence interpretation risk | Use evidence traceability map |
 | Dashboard or Studio assets are misread as new experiments | Evidence interpretation risk | Label them as evidence surfaces |
 | Missing captures create review friction | Package completeness risk | Keep missing items visible |
@@ -87,3 +88,29 @@ Issue list created: `docs/july31-review-packet/packet-review-issue-list.md`.
 Current readiness state: ready for internal review, not ready for external sharing as a final package.
 
 Next recommended work: Goal 020, July 31 Packet Fix Pass.
+
+## Goal 020 Fix Pass Update
+
+Review performed: the packet issue list, packet index, reviewer guide, evidence traceability map, claim boundary sheet, external sharing gate, and readiness report were updated as a focused fix pass.
+
+Issues addressed:
+
+- The packet issue list now includes fix pass status and resolution notes.
+- The packet index now includes the issue list and external sharing gate in the first-read path.
+- The reviewer guide now gives a step-by-step flow with evidence-to-claim checks.
+- The evidence traceability map now separates dry-run routing evidence, measured H100 routed subset evidence, and dashboard/Studio evidence surfaces more explicitly.
+- The claim boundary sheet is now identified as the controlling packet-level wording sheet.
+- The external sharing gate now states the current gate decision, capture requirements, and signoff requirements more directly.
+
+Issues remaining:
+
+- Sentence-level evidence traceability review for the technical report v0.1.
+- Final public-safe dashboard screenshots.
+- Final public-safe Studio screenshots.
+- Demo recording or reviewed recording summary.
+- Remaining figure/table drafts and caption review.
+- Reviewer signoff before broader sharing.
+
+Current readiness state: ready for internal July 31 review, not ready for broader sharing as a final package.
+
+Next recommended work: Goal 021, Final Demo Capture Execution.
