@@ -1,0 +1,73 @@
+{
+  "claim_boundary": {
+    "customer_workload_claim": false,
+    "full_1m_all_gpu_measured_execution_claim": false,
+    "production_cost_savings_claim": false,
+    "provider_cost_claim": false
+  },
+  "claim_level": "h100_saturation_subset_measured",
+  "comparison_to_gpu_004c": {
+    "gpu_004c_runtime_seconds": 1.752106,
+    "gpu_004c_subset_compute_weight": 2241645.288123,
+    "gpu_004c_utilization_avg": 15.444444,
+    "runtime_scales_roughly_with_compute_weight": true,
+    "runtime_to_calibrated_estimate_ratio": 0.853966,
+    "utilization_increased_vs_gpu_004c": true
+  },
+  "evidence_path": "docs/evidence/gpu-saturation-runs/20260606-053159-mixed_realistic_1m-kora-router-h100-saturation-subset.json",
+  "gpu_runtime": {
+    "checksum": -158.47688073,
+    "cuda_available": true,
+    "error_count": 0,
+    "error_rate": 0.0,
+    "gpu_count": 2,
+    "gpu_memory_mb_avg": 686.029412,
+    "gpu_memory_mb_max": 717.0,
+    "gpu_memory_total_mb": 81559.0,
+    "gpu_models": [
+      "NVIDIA H100 80GB HBM3"
+    ],
+    "gpu_utilization_avg": 19.161765,
+    "gpu_utilization_max": 21.0,
+    "output_digest": "8a03d37de2047ab4808635b70385b65c191312370d0390c5c27673820d86541c",
+    "per_class_counts": {
+      "embedding_index_query_large": 10708,
+      "embedding_similarity": 7169,
+      "gpu_batch_embedding": 10708,
+      "gpu_tensor_transform": 10707,
+      "rerank_batch_large": 10708
+    },
+    "per_class_runtime_seconds": {
+      "embedding_index_query_large": 1.760804,
+      "embedding_similarity": 0.991505,
+      "gpu_batch_embedding": 1.472296,
+      "gpu_tensor_transform": 1.470617,
+      "rerank_batch_large": 1.659351
+    },
+    "python_version": "3.10.12",
+    "runtime_seconds": 7.471771,
+    "sampling_interval_seconds": 0.2,
+    "sampling_method": "nvidia-smi",
+    "throughput_compute_weight_per_second": 1498185.903203,
+    "throughput_requests_per_second": 6691.853913,
+    "torch_available": true,
+    "torch_version": "2.5.1+cu121"
+  },
+  "h100_execution": true,
+  "live_provider_execution": false,
+  "measured_subset": {
+    "measured_subset_compute_weight": 11194101.984163,
+    "measured_subset_count": 50000,
+    "measured_subset_limit": 50000,
+    "measured_subset_selection_method": "deterministic_first_n_local_gpu_routes",
+    "measured_subset_sha256": "ebc8d54e3d50965ef08e2e56f82fdfe1398881b9dc392e0566dbc602ae6015e1"
+  },
+  "profile": "mixed_realistic_1m",
+  "router": "kora_router_adapter",
+  "schema_version": "gpu_006_h100_saturation_subset_v0_1",
+  "seed": 404,
+  "task_id": "KORA-CHAMPION-GPU-006B",
+  "timestamp_utc": "2026-06-06T05:32:36.724983+00:00",
+  "total_kora_local_gpu_routed_count": 212152,
+  "total_requests": 1000000
+}
