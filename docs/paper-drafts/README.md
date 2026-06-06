@@ -8,9 +8,18 @@ KORA is framed as an execution-path selectivity system. It benchmarks when H100 
 
 ## Draft Status
 
-Current status: early draft package.
+Current status: early draft package with v0 and v0.1 drafts.
 
 The documents in this directory are not submission materials. They are working drafts for technical review, evidence traceability, and claim-boundary tightening.
+
+## Draft Inventory
+
+| Draft | Path | Status |
+| --- | --- | --- |
+| v0 | `docs/paper-drafts/kora-early-technical-report-v0.md` | Claim-tightened early draft from Goal 016 |
+| v0.1 | `docs/paper-drafts/kora-technical-report-v0-1.md` | Cleaner assembly draft from Goal 017 |
+
+v0.1 is more reviewable than v0 because it incorporates the claim review, separates evidence categories more explicitly, and adds claim upgrade requirements. It is still not final-paper-ready.
 
 ## What Belongs Here
 
@@ -87,3 +96,5 @@ Before any later external use:
 - Review figure and table captions.
 - Complete limitations and future work review.
 - Confirm that draft status remains visible unless the document has completed a separate publication review process.
+- Confirm v0.1 has completed sentence-level evidence traceability review.
+- Confirm v0.1 has completed claim boundary review.
