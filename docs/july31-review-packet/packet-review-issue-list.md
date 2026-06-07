@@ -39,7 +39,7 @@ Goal 020 addressed packet navigation, controlling claim-boundary visibility, ext
 | Issue ID | Severity | Area | Finding | Why it matters | Recommended fix | Owner/status | Fix pass status | Resolution notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ET-001 | Important | Evidence traceability | Technical report v0.1 still needs sentence-level evidence traceability review | Numeric claims are source-linked, but every interpretive sentence has not been checked | Perform sentence-level pass against `docs/july31-review-packet/evidence-traceability-map.md` | Report owner | Open | Goal 020 improved packet-level traceability labels but did not perform sentence-level report review |
-| ET-002 | Important | Evidence traceability | Dashboard and Studio captures remain planned, not captured | Visual review cannot confirm the final reviewer experience | Add reviewed capture artifacts or documented exclusions | Demo package owner | Deferred | Requires Final Demo Capture Execution or an explicit capture deferral decision |
+| ET-002 | Important | Evidence traceability | Studio captures remain planned; dashboard captures are reviewed | Visual review can inspect dashboard evidence, but not the final Studio reviewer experience | Add reviewed Studio capture artifacts or documented exclusions | Demo package owner | Deferred | Goal 021 completed dashboard captures; Studio capture still requires final capture execution or explicit deferral |
 | ET-003 | Polish | Evidence traceability | Packet index links many documents but not a concise issue summary | Reviewers may need to scan multiple files to find open work | Add this issue list to the packet index | Packet owner | Addressed | Packet index now includes the issue list in the first-read path and readiness group |
 
 ## Reader Flow Issues
@@ -53,7 +53,7 @@ Goal 020 addressed packet navigation, controlling claim-boundary visibility, ext
 
 | Issue ID | Severity | Area | Finding | Why it matters | Recommended fix | Owner/status | Fix pass status | Resolution notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| DS-001 | Important | Dashboard/Studio evidence | Final dashboard screenshots are missing | Static dashboard exists, but capture package is not complete | Capture public-safe dashboard screenshots or document deferral | Demo package owner | Deferred | Requires capture execution or explicit capture deferral |
+| DS-001 | Important | Dashboard/Studio evidence | Final dashboard screenshots were missing before Goal 021 | Static dashboard exists, and page-content screenshots are now reviewable | Keep dashboard captures linked in the package index and manifest | Demo package owner | Addressed | Goal 021 committed reviewed dashboard screenshots and a capture review note |
 | DS-002 | Important | Dashboard/Studio evidence | Final Studio screenshots are missing | Studio remains a planned evidence surface, not a captured demo artifact | Capture public-safe Studio screenshots or document deferral | Demo package owner | Deferred | Requires capture execution or explicit capture deferral |
 | DS-003 | Important | Dashboard/Studio evidence | Demo recording summary is missing | The reviewer cannot yet inspect the intended demo narrative as a completed artifact | Add two-minute recording summary or documented deferral | Demo package owner | Deferred | Requires capture execution or explicit recording deferral |
 
@@ -94,7 +94,7 @@ Goal 020 addressed packet navigation, controlling claim-boundary visibility, ext
 
 ## Deferred Issues
 
-- ET-002, DS-001, DS-002, and DS-003: capture execution or capture deferral.
+- ET-002, DS-002, and DS-003: Studio capture execution, recording summary, or documented deferral.
 - TR-002, FT-001, FT-002, and FT-003: remaining paper asset drafting and caption review.
 
 ## Unresolved Blockers

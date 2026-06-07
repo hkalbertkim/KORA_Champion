@@ -24,7 +24,6 @@ Ready:
 
 Missing:
 
-- Final dashboard screenshots.
 - Final Studio screenshots.
 - Demo recording or reviewed recording summary.
 - Remaining paper figures and tables beyond Figure 1 and Table 1.
@@ -40,7 +39,7 @@ Reviewers can inspect:
 - Evidence artifact mapping.
 - Claim boundaries.
 - Technical report v0.1 structure.
-- Dashboard evidence view readiness.
+- Dashboard evidence view readiness and reviewed dashboard screenshots.
 - Studio demo package plan.
 - Gaps before final packet use.
 
@@ -105,7 +104,6 @@ Issues addressed:
 Issues remaining:
 
 - Sentence-level evidence traceability review for the technical report v0.1.
-- Final public-safe dashboard screenshots.
 - Final public-safe Studio screenshots.
 - Demo recording or reviewed recording summary.
 - Remaining figure/table drafts and caption review.
@@ -114,3 +112,15 @@ Issues remaining:
 Current readiness state: ready for internal July 31 review, not ready for broader sharing as a final package.
 
 Next recommended work: Goal 021, Final Demo Capture Execution.
+
+## Goal 021 Capture Update
+
+Capture performed: reviewed public-safe dashboard screenshots were generated from `docs/dashboard/index.html` and committed under `docs/demo-capture/screenshots/`.
+
+Capture review note: `docs/demo-capture/notes/capture-review-summary.md`.
+
+Capture not performed: Studio screenshots and video summaries were not committed because no public-safe renderable Studio surface or approved repository video artifact was available in this goal.
+
+Current readiness state: dashboard capture is ready for internal review. Studio capture, demo recording summary, sentence-level evidence traceability review, remaining figure/table review, and reviewer signoff remain open before broader sharing.
+
+Next recommended work: complete or explicitly defer Studio capture and demo recording summaries.

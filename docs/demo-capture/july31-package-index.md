@@ -43,20 +43,21 @@ The package supports a bounded benchmark claim: KORA can show compute-weighted G
 
 ## 5. Studio Demo Captures
 
-Planned capture artifacts:
+Capture artifacts:
 
 | Capture | Status |
 | --- | --- |
 | `docs/demo-capture/screenshots/studio-route-decision-01.png` | Missing |
 | `docs/demo-capture/screenshots/studio-path-explanation-02.png` | Missing |
 | `docs/demo-capture/screenshots/studio-evidence-map-03.png` | Missing |
-| `docs/demo-capture/screenshots/dashboard-core-message-04.png` | Missing |
-| `docs/demo-capture/screenshots/dashboard-routing-selectivity-05.png` | Missing |
-| `docs/demo-capture/screenshots/dashboard-h100-measured-06.png` | Missing |
-| `docs/demo-capture/screenshots/dashboard-scale-saturation-07.png` | Missing |
-| `docs/demo-capture/screenshots/dashboard-claim-boundary-08.png` | Missing |
+| `docs/demo-capture/screenshots/dashboard-core-message-04.png` | Reviewed dashboard capture |
+| `docs/demo-capture/screenshots/dashboard-routing-selectivity-05.png` | Reviewed dashboard capture |
+| `docs/demo-capture/screenshots/dashboard-h100-measured-06.png` | Reviewed dashboard capture |
+| `docs/demo-capture/screenshots/dashboard-scale-saturation-07.png` | Reviewed dashboard capture |
+| `docs/demo-capture/screenshots/dashboard-claim-boundary-08.png` | Reviewed dashboard capture |
 | `docs/demo-capture/recordings/kora-studio-two-minute-demo-summary.md` | Missing |
 | `docs/demo-capture/recordings/kora-studio-five-minute-demo-summary.md` | Optional |
+| `docs/demo-capture/notes/capture-review-summary.md` | Reviewed dashboard capture note |
 
 ## 6. Narration and Script
 
@@ -116,11 +117,14 @@ Non-claims:
 ## 9. Missing Items Before Final Submission
 
 - Public-safe Studio screenshots.
-- Public-safe dashboard screenshots.
 - Two-minute demo recording or recording summary.
 - Optional five-minute demo recording or recording summary.
-- Capture review summary.
+- Studio capture review summary.
 - Final package index update after captures are reviewed.
+
+## 9.1 Goal 021 Dashboard Capture Update
+
+Goal 021 committed reviewed public-safe dashboard screenshots from `docs/dashboard/index.html`. These screenshots contain only static dashboard page content. Studio screenshots and recording summaries remain pending.
 
 ## 10. Final Assembly Checklist
 

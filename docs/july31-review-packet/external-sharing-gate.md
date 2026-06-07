@@ -12,7 +12,7 @@ Broader sharing as an explicitly labeled early review packet: conditional. It ma
 
 The packet is coherent enough for internal July 31 review, but important items remain open:
 
-- Public-safe dashboard screenshots are not yet committed and reviewed.
+- Public-safe dashboard screenshots are committed and reviewed.
 - Public-safe Studio screenshots are not yet committed and reviewed.
 - Demo recording summary is not yet committed and reviewed.
 - Technical report v0.1 still needs sentence-level evidence traceability review.
@@ -48,12 +48,18 @@ Internal reviewers may inspect:
 
 Required unless explicitly deferred with rationale:
 
-- Public-safe dashboard screenshots.
 - Public-safe Studio screenshots.
 - Two-minute demo recording summary or documented deferral.
 - Capture review summary.
 
 Capture artifacts must not include local machine details, browser account details, shell details, private endpoints, or secret material.
+
+Current capture status:
+
+- Reviewed dashboard screenshots are committed under `docs/demo-capture/screenshots/`.
+- Dashboard capture review note is committed at `docs/demo-capture/notes/capture-review-summary.md`.
+- Studio screenshots remain pending.
+- Demo recording summary remains pending.
 
 ## Required Claim Review Before Broader Sharing
 
